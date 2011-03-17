@@ -40,6 +40,7 @@
 @interface SPStage : SPDisplayObjectContainer
 {
   @private
+    uint mColor;
     float mWidth;
     float mHeight;
  
@@ -77,6 +78,17 @@
 /// The native view the stage is connected to. Normally an SPView.
 @property (nonatomic, readonly) id nativeView;
 
+@property (nonatomic, assign) uint color;
+@property (nonatomic, assign) BOOL transparent;
+@property (nonatomic, assign) BOOL showFrameRate;
+
+
++ (void)setDefaultOrigin:(float)value;
++ (void)setDefaultOriginX:(float)value;
++ (float)defaultOriginX;
++ (void)setDefaultOriginY:(float)value;
++ (float)defaultOriginY;
+
 @end
 
 
@@ -93,5 +105,6 @@
 
 /// The current content scale factor.
 + (float)contentScaleFactor;
+
 
 @end

@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D220DDD133266E4006FAF5E /* SHCircle.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D220DCF133266E4006FAF5E /* SHCircle.h */; };
+		5D220DDE133266E4006FAF5E /* SHCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D220DD0133266E4006FAF5E /* SHCircle.m */; };
+		5D220DDF133266E4006FAF5E /* SHLine.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D220DD1133266E4006FAF5E /* SHLine.h */; };
+		5D220DE0133266E4006FAF5E /* SHLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D220DD2133266E4006FAF5E /* SHLine.m */; };
+		5D220DE1133266E4006FAF5E /* SHMotionBlurSprite.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D220DD3133266E4006FAF5E /* SHMotionBlurSprite.h */; };
+		5D220DE2133266E4006FAF5E /* SHMotionBlurSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D220DD4133266E4006FAF5E /* SHMotionBlurSprite.m */; };
+		5D220DE3133266E4006FAF5E /* SHPolygon.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D220DD5133266E4006FAF5E /* SHPolygon.h */; };
+		5D220DE4133266E4006FAF5E /* SHPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D220DD6133266E4006FAF5E /* SHPolygon.m */; };
+		5D220DE5133266E4006FAF5E /* SHShakeEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D220DD7133266E4006FAF5E /* SHShakeEvent.h */; };
+		5D220DE6133266E4006FAF5E /* SHShakeEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D220DD8133266E4006FAF5E /* SHShakeEvent.m */; };
+		5D220DE7133266E4006FAF5E /* SHSwipeEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D220DD9133266E4006FAF5E /* SHSwipeEvent.h */; };
+		5D220DE8133266E4006FAF5E /* SHSwipeEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D220DDA133266E4006FAF5E /* SHSwipeEvent.m */; };
+		5D220DE9133266E4006FAF5E /* SHThumbstick.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D220DDB133266E4006FAF5E /* SHThumbstick.h */; };
+		5D220DEA133266E4006FAF5E /* SHThumbstick.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D220DDC133266E4006FAF5E /* SHThumbstick.m */; };
+		5D220DEC133278A5006FAF5E /* SHInputField.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D220DEB133278A5006FAF5E /* SHInputField.h */; };
+		5D220DEE133278BA006FAF5E /* SHInputField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D220DED133278BA006FAF5E /* SHInputField.m */; };
 		DE019C391026360B00ECB0AC /* SPTween.m in Sources */ = {isa = PBXBuildFile; fileRef = DE7044760FB62080007F5ECC /* SPTween.m */; };
 		DE019C3A1026361200ECB0AC /* SPDelayedInvocation.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFB1B94100926260022C117 /* SPDelayedInvocation.m */; };
 		DE019C3B1026363D00ECB0AC /* SPNSExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DE68EA160FBB5660004DBC95 /* SPNSExtensions.m */; };
@@ -103,6 +119,22 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		28FD14FF0DC6FC520079059D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5D220DCF133266E4006FAF5E /* SHCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCircle.h; sourceTree = "<group>"; };
+		5D220DD0133266E4006FAF5E /* SHCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCircle.m; sourceTree = "<group>"; };
+		5D220DD1133266E4006FAF5E /* SHLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHLine.h; sourceTree = "<group>"; };
+		5D220DD2133266E4006FAF5E /* SHLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHLine.m; sourceTree = "<group>"; };
+		5D220DD3133266E4006FAF5E /* SHMotionBlurSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMotionBlurSprite.h; sourceTree = "<group>"; };
+		5D220DD4133266E4006FAF5E /* SHMotionBlurSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMotionBlurSprite.m; sourceTree = "<group>"; };
+		5D220DD5133266E4006FAF5E /* SHPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHPolygon.h; sourceTree = "<group>"; };
+		5D220DD6133266E4006FAF5E /* SHPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHPolygon.m; sourceTree = "<group>"; };
+		5D220DD7133266E4006FAF5E /* SHShakeEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHShakeEvent.h; sourceTree = "<group>"; };
+		5D220DD8133266E4006FAF5E /* SHShakeEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHShakeEvent.m; sourceTree = "<group>"; };
+		5D220DD9133266E4006FAF5E /* SHSwipeEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSwipeEvent.h; sourceTree = "<group>"; };
+		5D220DDA133266E4006FAF5E /* SHSwipeEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSwipeEvent.m; sourceTree = "<group>"; };
+		5D220DDB133266E4006FAF5E /* SHThumbstick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHThumbstick.h; sourceTree = "<group>"; };
+		5D220DDC133266E4006FAF5E /* SHThumbstick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHThumbstick.m; sourceTree = "<group>"; };
+		5D220DEB133278A5006FAF5E /* SHInputField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHInputField.h; sourceTree = "<group>"; };
+		5D220DED133278BA006FAF5E /* SHInputField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHInputField.m; sourceTree = "<group>"; };
 		DE05748611E915A900F3A8A4 /* SPNSExtensionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPNSExtensionsTest.m; sourceTree = "<group>"; };
 		DE08535C0FEC21F500DAF53C /* SPImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPImage.h; sourceTree = "<group>"; };
 		DE08535D0FEC21F500DAF53C /* SPImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPImage.m; sourceTree = "<group>"; };
@@ -260,6 +292,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5D220DCD1332656A006FAF5E /* Shilo */,
 				DEE63A4A11AED36700D60321 /* Audio */,
 				DEDCD3CE0FADF2100022011C /* System */,
 				DEDCD3C60FADF1870022011C /* Events */,
@@ -314,6 +347,29 @@
 				DE18FE4411B083B200D01F04 /* AVFoundation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5D220DCD1332656A006FAF5E /* Shilo */ = {
+			isa = PBXGroup;
+			children = (
+				5D220DED133278BA006FAF5E /* SHInputField.m */,
+				5D220DEB133278A5006FAF5E /* SHInputField.h */,
+				5D220DCF133266E4006FAF5E /* SHCircle.h */,
+				5D220DD0133266E4006FAF5E /* SHCircle.m */,
+				5D220DD1133266E4006FAF5E /* SHLine.h */,
+				5D220DD2133266E4006FAF5E /* SHLine.m */,
+				5D220DD3133266E4006FAF5E /* SHMotionBlurSprite.h */,
+				5D220DD4133266E4006FAF5E /* SHMotionBlurSprite.m */,
+				5D220DD5133266E4006FAF5E /* SHPolygon.h */,
+				5D220DD6133266E4006FAF5E /* SHPolygon.m */,
+				5D220DD7133266E4006FAF5E /* SHShakeEvent.h */,
+				5D220DD8133266E4006FAF5E /* SHShakeEvent.m */,
+				5D220DD9133266E4006FAF5E /* SHSwipeEvent.h */,
+				5D220DDA133266E4006FAF5E /* SHSwipeEvent.m */,
+				5D220DDB133266E4006FAF5E /* SHThumbstick.h */,
+				5D220DDC133266E4006FAF5E /* SHThumbstick.m */,
+			);
+			name = Shilo;
 			sourceTree = "<group>";
 		};
 		DE20D9C810713AD0006658C9 /* Rendering */ = {
@@ -546,6 +602,14 @@
 			files = (
 				DE13D18B12AADBF6000C77E6 /* SPRenderTexture.h in Headers */,
 				DE33072512D2EBCD009CC5E7 /* SPUtils.h in Headers */,
+				5D220DDD133266E4006FAF5E /* SHCircle.h in Headers */,
+				5D220DDF133266E4006FAF5E /* SHLine.h in Headers */,
+				5D220DE1133266E4006FAF5E /* SHMotionBlurSprite.h in Headers */,
+				5D220DE3133266E4006FAF5E /* SHPolygon.h in Headers */,
+				5D220DE5133266E4006FAF5E /* SHShakeEvent.h in Headers */,
+				5D220DE7133266E4006FAF5E /* SHSwipeEvent.h in Headers */,
+				5D220DE9133266E4006FAF5E /* SHThumbstick.h in Headers */,
+				5D220DEC133278A5006FAF5E /* SHInputField.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,6 +764,14 @@
 				DEE6516B11F9DF200065207E /* SPCompiledSprite.m in Sources */,
 				DE13D18C12AADBF6000C77E6 /* SPRenderTexture.m in Sources */,
 				DE33072612D2EBCD009CC5E7 /* SPUtils.m in Sources */,
+				5D220DDE133266E4006FAF5E /* SHCircle.m in Sources */,
+				5D220DE0133266E4006FAF5E /* SHLine.m in Sources */,
+				5D220DE2133266E4006FAF5E /* SHMotionBlurSprite.m in Sources */,
+				5D220DE4133266E4006FAF5E /* SHPolygon.m in Sources */,
+				5D220DE6133266E4006FAF5E /* SHShakeEvent.m in Sources */,
+				5D220DE8133266E4006FAF5E /* SHSwipeEvent.m in Sources */,
+				5D220DEA133266E4006FAF5E /* SHThumbstick.m in Sources */,
+				5D220DEE133278BA006FAF5E /* SHInputField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

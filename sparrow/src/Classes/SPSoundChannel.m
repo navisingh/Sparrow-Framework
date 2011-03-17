@@ -13,7 +13,7 @@
 #import "SPMacros.h"
 
 @implementation SPSoundChannel
-
+@synthesize pitch;
 - (id)init
 {
     if ([self isMemberOfClass:[SPSoundChannel class]]) 

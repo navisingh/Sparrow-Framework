@@ -33,6 +33,7 @@
 
 @synthesize volume = mVolume;
 @synthesize loop = mLoop;
+@synthesize pitch = mPitch;
 
 - (id)init
 {
@@ -42,7 +43,7 @@
 
 - (id)initWithSound:(SPALSound *)sound
 {
-    if (self = [super init])
+    if ((self = [super init]))
     {
         mSound = [sound retain];
         mVolume = 1.0f;
@@ -50,6 +51,7 @@
         mInterrupted = NO;
         mStartMoment = 0.0;
         mPauseMoment = 0.0;
+        mPitch = 1.0f;
         
         alGenSources(1, &mSourceID);
         alSourcei(mSourceID, AL_BUFFER, sound.bufferID);
@@ -156,6 +158,15 @@
         mVolume = value;
         alSourcef(mSourceID, AL_GAIN, mVolume);        
     }
+}
+
+- (void)setPitch:(float)pitch
+{
+	if (pitch != mPitch)
+	{
+		mPitch = pitch;
+		alSourcef(mSourceID, AL_PITCH, mPitch);
+	}
 }
 
 - (double)duration

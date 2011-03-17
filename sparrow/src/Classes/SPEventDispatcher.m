@@ -90,7 +90,14 @@
     SPEventDispatcher *previousTarget = event.target;
     if (!event.target || event.currentTarget) event.target = self;
     event.currentTarget = self;        
-
+	if (event.type == @"enterFrame") {
+		SPDisplayObject *currentObject = (SPDisplayObject *)event.currentTarget;
+		if (!currentObject.loopable) return;
+		while (currentObject.parent) {
+			currentObject = (SPDisplayObject *)currentObject.parent;
+			if (!currentObject.loopable) return;
+		}
+	}
     [self retain]; // the event listener could release 'self', so we have to make sure that it 
                    // stays valid while we're here.
     

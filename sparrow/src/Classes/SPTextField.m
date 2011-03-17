@@ -44,18 +44,27 @@ static NSMutableDictionary *bitmapFonts = nil;
 @synthesize vAlign = mVAlign;
 @synthesize border = mBorder;
 @synthesize color = mColor;
+@synthesize shadow = mShadow;
+@synthesize shadowColor = mShadowColor;
+@synthesize shadowOffsetX = mShadowOffsetX;
+@synthesize shadowOffsetY = mShadowOffsetY;
 
 - (id)initWithWidth:(float)width height:(float)height text:(NSString*)text fontName:(NSString*)name 
           fontSize:(float)size color:(uint)color 
 {
-    if (self = [super init])
+    if ((self = [super init]))
     {        
         mText = [text copy];
         mFontSize = size;
         mColor = color;
         mHAlign = SPHAlignCenter;
         mVAlign = SPVAlignCenter;
-        mBorder = NO;        
+        mBorder = NO;    
+        mShadow = NO;
+		mShadowColor = 0x000000;
+		mShadowOffsetX = 1;
+		mShadowOffsetY = 1;
+        
         self.fontName = name;
         
         mHitArea = [[SPQuad alloc] initWithWidth:width height:height];
@@ -153,11 +162,28 @@ static NSMutableDictionary *bitmapFonts = nil;
             lineBreakMode:lbm alignment:mHAlign];
     }];
     
-    SPImage *image = [SPImage imageWithTexture:texture];
-    image.color = mColor;
+    SPImage *textImage = [[SPImage alloc] initWithTexture:texture];
+    textImage.color = mColor;
+	textImage.name = @"text";
+    
+	SPImage *shadowImage;
+	if (mShadow) {
+		shadowImage = [[SPImage alloc] initWithTexture:texture];
+		shadowImage.color = mShadowColor;
+		shadowImage.name = @"shadow";
+		shadowImage.x = mShadowOffsetX;
+		shadowImage.y = mShadowOffsetY;
+	}
+    
+    SPSprite *textSprite = [SPSprite sprite];
+	if (mShadow) [textSprite addChild:shadowImage];
+	[textSprite addChild:textImage];
+    
+	if (mShadow) [shadowImage release];
+	[textImage release];
     [texture release];
     
-    return image;
+    return textSprite;
 }
 
 - (SPDisplayObject *)createComposedContents
@@ -170,6 +196,15 @@ static NSMutableDictionary *bitmapFonts = nil;
     SPDisplayObject *contents = [bitmapFont createDisplayObjectWithWidth:mHitArea.width 
         height:mHitArea.height text:mText fontSize:mFontSize color:mColor
         hAlign:mHAlign vAlign:mVAlign border:mBorder];    
+
+	if (mShadow) {
+		SPDisplayObject *shadowContents = [bitmapFont createDisplayObjectWithWidth:mHitArea.width 
+                                                                            height:mHitArea.height text:mText fontSize:mFontSize color:mShadowColor
+                                                                            hAlign:mHAlign vAlign:mVAlign border:mBorder];
+		shadowContents.x = mShadowOffsetX;
+		shadowContents.y = mShadowOffsetY;
+		[(SPDisplayObjectContainer *)contents addChild:shadowContents atIndex:0];
+	}
     
     SPRectangle *textBounds = [(SPDisplayObjectContainer *)contents childAtIndex:0].bounds;
     mTextArea.x = textBounds.x; mTextArea.y = textBounds.y;
@@ -244,6 +279,15 @@ static NSMutableDictionary *bitmapFonts = nil;
     }
 }
  
+- (void)setShadow:(BOOL)shadow
+{
+    if (shadow != mShadow)
+    {
+        mShadow = shadow;
+        mRequiresRedraw = YES;
+    }
+}
+
 - (void)setHAlign:(SPHAlign)hAlign
 {
     if (hAlign != mHAlign)
@@ -268,8 +312,44 @@ static NSMutableDictionary *bitmapFonts = nil;
     {
         mColor = color;
         if (mIsRenderedText) 
-            [(SPImage *)mContents setColor:color];
+            [(SPImage *)[(SPSprite *)mContents childByName:@"text"] setColor:color];
         else 
+            mRequiresRedraw = YES;
+    }
+}
+
+- (void)setShadowColor:(uint)shadowColor
+{
+    if (shadowColor != mShadowColor)
+    {
+        mShadowColor = shadowColor;
+		if (mIsRenderedText) 
+			[(SPImage *)[(SPSprite *)mContents childByName:@"shadow"] setColor:shadowColor];
+		else 
+            mRequiresRedraw = YES;
+    }
+}
+
+- (void)setShadowOffsetX:(int)shadowOffsetX
+{
+	if (shadowOffsetX != mShadowOffsetX)
+   	{
+        mShadowOffsetX = shadowOffsetX;
+		if (mIsRenderedText) 
+			[(SPImage *)[(SPSprite *)mContents childByName:@"shadow"] setX:shadowOffsetX];
+		else 
+            mRequiresRedraw = YES;
+    }
+}
+
+- (void)setShadowOffsetY:(int)shadowOffsetY
+{
+	if (shadowOffsetY != mShadowOffsetY)
+    {
+        mShadowOffsetY = shadowOffsetY;
+		if (mIsRenderedText) 
+			[(SPImage *)[(SPSprite *)mContents childByName:@"shadow"] setY:shadowOffsetY];
+		else 
             mRequiresRedraw = YES;
     }
 }

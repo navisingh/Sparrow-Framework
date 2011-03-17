@@ -19,6 +19,7 @@
 #import "SPTouch.h"
 #import "SPTouch_Internal.h"
 #import "SPRenderSupport.h"
+#import "SPTextField.h"
 
 // --- private interface ---------------------------------------------------------------------------
 
@@ -42,10 +43,12 @@
 
 #define REFRESH_RATE 60
 
+@synthesize transparent = mTransparent;
 @synthesize stage = mStage;
 @synthesize timer = mTimer;
 @synthesize displayLink = mDisplayLink;
 @synthesize frameRate = mFrameRate;
+@synthesize showFrameRate = mShowFrameRate;
 
 - (id)initWithFrame:(CGRect)frame 
 {    
@@ -143,11 +146,28 @@
     
     [mRenderSupport bindTexture:nil]; // old textures could have become invalid
     [mStage render:mRenderSupport];
+    if (mShowFrameRate) [self displayFrameRate:timePassed];
     
     glBindRenderbufferOES(GL_RENDERBUFFER_OES, mRenderbuffer);
     [mContext presentRenderbuffer:GL_RENDERBUFFER_OES];
     
     SP_RELEASE_POOL(pool);
+}
+
+- (void)displayFrameRate:(double)passedTime
+{
+	static int frameCount = 0;
+	static double timeCount = 0;
+    
+	frameCount++;
+	timeCount += passedTime;
+	if (timeCount >= 1.0f) {
+		frameRateTextField.text = [NSString stringWithFormat:@"FPS: %i", frameCount];
+		frameCount = 0;
+		timeCount -= 1.0f;
+	}
+    
+	if ([mStage childIndex:frameRateTextField] != mStage.numChildren-1) [mStage addChild:frameRateTextField];
 }
 
 - (void)setTimer:(NSTimer *)newTimer 
@@ -293,6 +313,50 @@
         
         SP_RELEASE_POOL(pool);
     }    
+}
+
+- (void)setTransparent:(BOOL)transparent
+{
+	if (transparent != mTransparent) {
+		mTransparent = transparent;
+		if (mTransparent) {
+			self.backgroundColor = [UIColor clearColor];
+			self.layer.opaque = NO;
+		} else {
+			self.backgroundColor = [UIColor whiteColor];
+			self.layer.opaque = YES;
+		}
+	}
+}
+
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
+{	
+	if (mTransparent) {
+		return ([mStage hitTestPoint:[SPPoint pointWithX:point.x y:point.y] forTouch:YES])?YES:NO;
+	}  else {
+		return YES;
+	}
+}
+
+- (void)setShowFrameRate:(BOOL)showFrameRate
+{
+	if (showFrameRate != mShowFrameRate) {
+		mShowFrameRate = showFrameRate;
+        
+		if (showFrameRate) {
+			frameRateTextField = [SPTextField textFieldWithWidth:55 height:15 text:[NSString stringWithFormat:@"FPS: %.0f", mFrameRate]];
+			frameRateTextField.hAlign = SPHAlignLeft;
+			frameRateTextField.vAlign = SPVAlignBottom;
+			frameRateTextField.color = 0xffffff;
+			frameRateTextField.shadow = YES;
+			frameRateTextField.x = 5;
+			frameRateTextField.y = 5;
+			[mStage addChild:frameRateTextField];
+		} else {
+			[mStage removeChild:frameRateTextField];
+			frameRateTextField = nil;
+		}
+	}
 }
 
 - (void)dealloc 

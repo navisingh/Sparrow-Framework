@@ -24,11 +24,14 @@
 static BOOL supportHighResolutions = NO;
 static float contentScaleFactor = -1;
 static NSMutableArray *stages = NULL;
+static float defaultOriginX;
+static float defaultOriginY;
 
 // --- class implementation ------------------------------------------------------------------------
 
 @implementation SPStage
 
+@synthesize color = mColor;
 @synthesize width = mWidth;
 @synthesize height = mHeight;
 @synthesize juggler = mJuggler;
@@ -36,7 +39,7 @@ static NSMutableArray *stages = NULL;
 
 - (id)initWithWidth:(float)width height:(float)height
 {    
-    if (self = [super init])
+    if ((self = [super init]))
     {
         // Save existing stages to have access to them in "SPStage setSupportHighResolutions:".
         // We use a CFArray to avoid that 'self' is retained -> that would cause a memory leak!
@@ -74,7 +77,7 @@ static NSMutableArray *stages = NULL;
     [mTouchProcessor processTouches:touches];
 }
 
-- (SPDisplayObject*)hitTestPoint:(SPPoint*)localPoint forTouch:(BOOL)isTouch;
+- (SPDisplayObject*)hitTestPoint:(SPPoint*)localPoint forTouch:(BOOL)isTouch
 {
     if (isTouch && (!self.visible || !self.touchable)) 
         return nil;
@@ -82,7 +85,7 @@ static NSMutableArray *stages = NULL;
     SPDisplayObject *target = [super hitTestPoint:localPoint forTouch:isTouch];
     
     // different to other containers, the stage should acknowledge touches even in empty parts.
-    if (!target)
+    if (!target  && !self.transparent)
     {
         SPRectangle *bounds = [SPRectangle rectangleWithX:self.x y:self.y 
                                                     width:self.width height:self.height];
@@ -147,6 +150,26 @@ static NSMutableArray *stages = NULL;
     return [mNativeView frameRate];
 }
 
+- (void)setTransparent:(BOOL)transparent
+{
+    [mNativeView setTransparent:transparent];
+}
+
+- (BOOL)transparent
+{
+    return [mNativeView transparent];
+}
+
+- (void)setShowFrameRate:(BOOL)value
+{
+    [mNativeView setShowFrameRate:value];
+}
+
+- (BOOL)showFrameRate
+{
+    return [mNativeView showFrameRate];
+}
+
 - (void)dealloc 
 {    
     [SPPoint purgePool];
@@ -160,6 +183,39 @@ static NSMutableArray *stages = NULL;
     if (stages.count == 0) { [stages release]; stages = NULL; }    
     
     [super dealloc];
+}
+
++ (void)setDefaultOrigin:(float)value {
+	if (value < 0 || value > 1) [NSException raise:NSInvalidArgumentException format:@"Default Origin must have a float value between 0 and 1.", NSStringFromSelector(_cmd)];
+    
+	[SPStage setDefaultOriginX:value];
+	[SPStage setDefaultOriginY:value];
+}
+
++ (void)setDefaultOriginX:(float)value
+{
+	if (value < 0 || value > 1) [NSException raise:NSInvalidArgumentException format:@"Default OriginX must have a float value between 0 and 1.", NSStringFromSelector(_cmd)];
+	if (value != defaultOriginX) {
+		defaultOriginX = value;
+	}
+}
+
++ (float)defaultOriginX
+{
+	return defaultOriginX;
+}
+
++ (void)setDefaultOriginY:(float)value
+{
+	if (value < 0 || value > 1) [NSException raise:NSInvalidArgumentException format:@"Default OriginY must have a float value between 0 and 1.", NSStringFromSelector(_cmd)];
+	if (value != defaultOriginY) {
+		defaultOriginY = value;
+	}
+}
+
++ (float)defaultOriginY
+{
+	return defaultOriginY;
 }
 
 @end

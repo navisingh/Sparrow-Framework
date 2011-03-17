@@ -24,7 +24,7 @@
 
 - (id)init
 {
-    if (self = [super init])
+    if ((self = [super init]))
     {
         mBoundTextureID = UINT_MAX;
         mPremultipliedAlpha = YES;
@@ -37,9 +37,9 @@
 {
     uint newTextureID = texture.textureID;
     BOOL newPMA = texture.hasPremultipliedAlpha;
-    
+	
     if (newTextureID != mBoundTextureID)
-        glBindTexture(GL_TEXTURE_2D, newTextureID);        
+        glBindTexture(GL_TEXTURE_2D, newTextureID);
     
     if (newPMA != mPremultipliedAlpha || !mBoundTextureID)
     {
@@ -61,16 +61,16 @@
     if (pma)
     {
         return (GLubyte)(SP_COLOR_PART_RED(color) * alpha) |
-               (GLubyte)(SP_COLOR_PART_GREEN(color) * alpha) << 8 |
-               (GLubyte)(SP_COLOR_PART_BLUE(color) * alpha) << 16 |
-               (GLubyte)(alpha * 255) << 24;
+        (GLubyte)(SP_COLOR_PART_GREEN(color) * alpha) << 8 |
+        (GLubyte)(SP_COLOR_PART_BLUE(color) * alpha) << 16 |
+        (GLubyte)(alpha * 255) << 24;
     }
     else
     {
         return (GLubyte)SP_COLOR_PART_RED(color) |
-               (GLubyte)SP_COLOR_PART_GREEN(color) << 8 |
-               (GLubyte)SP_COLOR_PART_BLUE(color) << 16 |
-               (GLubyte)(alpha * 255) << 24;
+        (GLubyte)SP_COLOR_PART_GREEN(color) << 8 |
+        (GLubyte)SP_COLOR_PART_BLUE(color) << 16 |
+        (GLubyte)(alpha * 255) << 24;
     }
 }
 
@@ -86,15 +86,21 @@
 
 + (void)transformMatrixForObject:(SPDisplayObject *)object
 {
-    float x = object.x;
-    float y = object.y;
-    float rotation = object.rotation;
-    float scaleX = object.scaleX;
-    float scaleY = object.scaleY;
-    
-    if (x != 0.0f || y != 0.0f)           glTranslatef(x, y, 0);
-    if (rotation != 0.0f)                 glRotatef(SP_R2D(rotation), 0.0f, 0.0f, 1.0f);
-    if (scaleX != 0.0f || scaleY != 0.0f) glScalef(scaleX, scaleY, 1.0f); 
+	float originPixelX = object.originPixelX;
+	float originPixelY = object.originPixelY;
+	float x = object.x - originPixelX;
+	float y = object.y - originPixelY;
+	float rotation = object.rotation;
+	float scaleX = object.scaleX;
+	float scaleY = object.scaleY;
+	
+	if (x != 0.0f || y != 0.0f) glTranslatef(x, y, 0);
+	if (rotation != 0.0f) {
+		if (originPixelX || originPixelY) glTranslatef(originPixelX, originPixelY, 0);
+		glRotatef(SP_R2D(rotation), 0.0f, 0.0f, 1.0f);
+		if (originPixelX || originPixelY) glTranslatef(-originPixelX, -originPixelY, 0);
+	}
+	if (scaleX != 0.0f || scaleY != 0.0f) glScalef(scaleX, scaleY, 1.0f);
 }
 
 + (void)setupOrthographicRenderingWithLeft:(float)left right:(float)right 

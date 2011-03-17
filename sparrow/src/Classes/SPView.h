@@ -17,6 +17,7 @@
 
 @class SPStage;
 @class SPRenderSupport;
+@class SPTextField;
 
 /** ------------------------------------------------------------------------------------------------
 
@@ -32,7 +33,9 @@
 
 @interface SPView : UIView
 { 
-  @private  
+  @private
+    SPTextField *frameRateTextField;
+    BOOL mTransparent;
     int mWidth;
     int mHeight;
     
@@ -65,6 +68,9 @@
 /// The stage object that will be processed.
 @property (nonatomic, retain) SPStage *stage;
 
+@property (nonatomic, assign) BOOL transparent;
+@property (nonatomic, assign) BOOL showFrameRate;
+
 /// -------------
 /// @name Methods
 /// -------------
@@ -74,5 +80,7 @@
 
 /// Stops rendering and event handling. Call this when the application moves into the background.
 - (void)stop;
+
+- (void)displayFrameRate:(double)passedTime;
 
 @end

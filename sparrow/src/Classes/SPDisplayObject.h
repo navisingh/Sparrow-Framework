@@ -86,10 +86,16 @@
     float mAlpha;
     BOOL mVisible;
     BOOL mTouchable;
+    BOOL mLoopable;
+    float mOriginX;
+	float mOriginY;
+	float mOriginPixelX;
+	float mOriginPixelY;
     
     SPDisplayObjectContainer *mParent;    
     double mLastTouchTimestamp;
     NSString *mName;
+    int mTag;
 }
 
 /// -------------
@@ -116,6 +122,9 @@
 
 /// Returns the object that is found topmost on a point in local coordinates, or nil if the test fails.
 - (SPDisplayObject*)hitTestPoint:(SPPoint*)localPoint forTouch:(BOOL)isTouch;
+
+- (void)setOrigin:(float)origin;
+- (void)setOriginPixel:(float)originPixel;
 
 /// ----------------
 /// @name Properties
@@ -151,6 +160,9 @@
 /// Indicates if this object (and its children) will receive touch events.
 @property (nonatomic, assign) BOOL touchable;
 
+/// Indicates if this object (and its children) will receive enter frame events.
+@property (nonatomic, assign) BOOL loopable;
+
 /// The bounds of the object relative to the local coordinates of the parent.
 @property (nonatomic, readonly) SPRectangle *bounds;
 
@@ -166,7 +178,16 @@
 /// The transformation matrix of the object relative to its parent.
 @property (nonatomic, readonly) SPMatrix *transformationMatrix;
 
+
 /// The name of the display object (default: nil). Used by `childByName:` of display object containers.
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, assign) int tag;
+
+@property (nonatomic, assign) float originX;
+@property (nonatomic, assign) float originY;
+@property (nonatomic, assign) float originPixelX;
+@property (nonatomic, assign) float originPixelY;
+@property (nonatomic, assign, readonly) float realWidth;
+@property (nonatomic, assign, readonly) float realHeight;
 
 @end

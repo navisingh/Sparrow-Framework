@@ -12,6 +12,12 @@
 #import <Foundation/Foundation.h>
 #import "SPDisplayObject.h"
 
+typedef enum 
+{
+    SPGradientHorizontal = 0,
+    SPGradientVertical
+} SPGradientStyle;
+
 /** ------------------------------------------------------------------------------------------------
 
  An SPQuad displays a single, colored rectangle.
@@ -59,6 +65,19 @@
   @protected
     float mVertexCoords[8];
     uint mVertexColors[4];
+	BOOL mBorder;
+	float mBorderWidth;
+	float mBorderVertexCoords[8];
+	uint mBorderVertexColors[4];
+    BOOL mFill;
+    float mDefaultVertexCoords[8];
+	float mDefaultBorderVertexCoords[8];
+	float mScewX1;
+	float mScewX2;
+	float mScewY1;
+	float mScewY2;
+    float mVertexAlpha[4];
+	float mBorderVertexAlpha[4];
 }
 
 /// --------------------
@@ -81,6 +100,20 @@
 /// Returns the color of a vertex.
 - (uint)colorOfVertex:(int)vertexID;
 
+- (void)setBorderColor:(uint)borderColor ofVertex:(int)vertexID;
+
+- (uint)colorOfBorderVertex:(int)vertexID;
+
+- (void)setGradientStartColor:(uint)startColor endColor:(uint)endColor withStyle:(int)style;
+- (void)setGradientStartColor:(uint)startColor startAlpha:(float)startAlpha endColor:(uint)endColor withStyle:(int)style;
+- (void)setGradientStartColor:(uint)startColor endColor:(uint)endColor endAlpha:(float)endAlpha withStyle:(int)style;
+- (void)setGradientStartColor:(uint)startColor startAlpha:(float)startAlpha endColor:(uint)endColor endAlpha:(float)endAlpha withStyle:(int)style;
+
+- (void)setBorderGradientStartColor:(uint)startColor endColor:(uint)endColor withStyle:(int)style;
+- (void)setBorderGradientStartColor:(uint)startColor startAlpha:(float)startAlpha endColor:(uint)endColor withStyle:(int)style;
+- (void)setBorderGradientStartColor:(uint)startColor endColor:(uint)endColor endAlpha:(float)endAlpha withStyle:(int)style;
+- (void)setBorderGradientStartColor:(uint)startColor startAlpha:(float)startAlpha endColor:(uint)endColor endAlpha:(float)endAlpha withStyle:(int)style;
+
 /// Factory method.
 + (SPQuad*)quadWithWidth:(float)width height:(float)height;
 
@@ -93,5 +126,15 @@
 
 /// Sets the colors of all vertices simultaneously. Returns the color of vertex '0'.
 @property (nonatomic, assign) uint color;
+
+@property (nonatomic, assign) BOOL border;
+@property (nonatomic, assign) uint borderColor;
+@property (nonatomic, assign) float borderWidth;
+@property (nonatomic, assign) BOOL fill;
+@property (nonatomic, assign) float scewX1;
+@property (nonatomic, assign) float scewX2;
+@property (nonatomic, assign) float scewY1;
+@property (nonatomic, assign) float scewY2;
+@property (nonatomic, assign) float *scew;
 
 @end

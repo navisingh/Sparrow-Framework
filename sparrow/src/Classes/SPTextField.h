@@ -12,6 +12,7 @@
 #import <Foundation/Foundation.h>
 #import "SPDisplayObjectContainer.h"
 #import "SPMacros.h"
+#import "SPSprite.h"
 
 @class SPTexture;
 @class SPQuad;
@@ -95,6 +96,11 @@ typedef enum
     SPQuad *mHitArea;
     SPQuad *mTextArea;
     SPDisplayObject *mContents;
+    
+    BOOL mShadow;
+	uint mShadowColor;
+	int mShadowOffsetX;
+	int mShadowOffsetY;
 }
 
 /// ------------------
@@ -165,5 +171,10 @@ typedef enum
 
 /// The bounds of the actual characters inside the text field.
 @property (nonatomic, readonly) SPRectangle *textBounds;
+
+@property (nonatomic, assign) BOOL shadow;
+@property (nonatomic, assign) uint shadowColor;
+@property (nonatomic, assign) int shadowOffsetX;
+@property (nonatomic, assign) int shadowOffsetY;
 
 @end

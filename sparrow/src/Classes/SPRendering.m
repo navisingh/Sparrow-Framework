@@ -26,7 +26,10 @@
 
 - (void)render:(SPRenderSupport *)support;
 {
-    [SPRenderSupport clearWithColor:0x0 alpha:1.0f];
+//Shilo has two alternate implementations here.  one with 0x0 and the other with mColor
+//  [SPRenderSupport clearWithColor:0x0 alpha:self.transparent?0:1.0f];
+    [SPRenderSupport clearWithColor:mColor alpha:self.transparent?0:1.0f];
+
     [SPRenderSupport setupOrthographicRenderingWithLeft:0 right:mWidth bottom:mHeight top:0];    
     
     [super render:support];
@@ -69,20 +72,32 @@
 - (void)render:(SPRenderSupport *)support
 {    
     static uint colors[4];
+    static uint borderColors[4];
     float alpha = self.alpha;
     
     [support bindTexture:nil];
     
-    for (int i=0; i<4; ++i)
-        colors[i] = [support convertColor:mVertexColors[i] alpha:alpha];
+ 	for (int i=0; i<4; ++i) {
+		colors[i] = [support convertColor:mVertexColors[i] alpha:alpha];
+		if (mFill) colors[i] = [support convertColor:mVertexColors[i] alpha:mVertexAlpha[i]*alpha];
+		if (mBorder) borderColors[i] = [support convertColor:mBorderVertexColors[i] alpha:mBorderVertexAlpha[i]*alpha];
+	}
     
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_COLOR_ARRAY);    
     
-    glVertexPointer(2, GL_FLOAT, 0, mVertexCoords);
-    glColorPointer(4, GL_UNSIGNED_BYTE, 0, colors);
-    
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    if (mFill) {
+        glVertexPointer(2, GL_FLOAT, 0, mVertexCoords);
+        glColorPointer(4, GL_UNSIGNED_BYTE, 0, colors);
+        
+        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    }
+	if (mBorder) {
+		glVertexPointer(2, GL_FLOAT, 0, mBorderVertexCoords);
+		glColorPointer(4, GL_UNSIGNED_BYTE, 0, borderColors);
+		glLineWidth(mBorderWidth);
+		glDrawArrays(GL_LINE_LOOP, 0, 4);
+	}
     
     glDisableClientState(GL_VERTEX_ARRAY);
     glDisableClientState(GL_COLOR_ARRAY);

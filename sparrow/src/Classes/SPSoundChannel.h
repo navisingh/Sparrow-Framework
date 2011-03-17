@@ -64,4 +64,6 @@
 /// Indicates if the sound should loop. Looping sounds don't dispatch SOUND_COMPLETED events.
 @property (nonatomic, assign) BOOL loop;
 
+@property (nonatomic, assign) float pitch;
+
 @end

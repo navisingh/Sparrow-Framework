@@ -34,8 +34,9 @@
     double mStartMoment;
     double mPauseMoment;
     BOOL mInterrupted;
+    float mPitch;
 }
-
+@property (nonatomic, assign) float pitch;
 /// ------------------
 /// @name Initializers
 /// ------------------
