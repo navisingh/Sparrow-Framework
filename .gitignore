@@ -2,6 +2,7 @@
 */build
 *.pbxuser
 !default.pbxuser
+*.mode1
 *.mode1v3
 !default.mode1v3
 *.mode2v3
@@ -11,8 +12,8 @@
 !default.perspectivev3
 *.xcuserdatad
 *.xcworkspace
+project.xcworkspace
 !default.xcworkspace
-xcuserdata
 profile
 *.moved-aside
 
