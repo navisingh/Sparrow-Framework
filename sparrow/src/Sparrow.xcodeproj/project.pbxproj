@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1895BF421337C1A200EF37F4 /* SHPolygonEx.h in Headers */ = {isa = PBXBuildFile; fileRef = 1895BF401337C1A100EF37F4 /* SHPolygonEx.h */; };
+		1895BF431337C1A200EF37F4 /* SHPolygonEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 1895BF411337C1A100EF37F4 /* SHPolygonEx.m */; };
 		5D220DDD133266E4006FAF5E /* SHCircle.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D220DCF133266E4006FAF5E /* SHCircle.h */; };
 		5D220DDE133266E4006FAF5E /* SHCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D220DD0133266E4006FAF5E /* SHCircle.m */; };
 		5D220DDF133266E4006FAF5E /* SHLine.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D220DD1133266E4006FAF5E /* SHLine.h */; };
@@ -115,6 +117,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1895BF401337C1A100EF37F4 /* SHPolygonEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHPolygonEx.h; sourceTree = "<group>"; };
+		1895BF411337C1A100EF37F4 /* SHPolygonEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHPolygonEx.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		28FD14FF0DC6FC520079059D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -368,6 +372,8 @@
 				5D220DDA133266E4006FAF5E /* SHSwipeEvent.m */,
 				5D220DDB133266E4006FAF5E /* SHThumbstick.h */,
 				5D220DDC133266E4006FAF5E /* SHThumbstick.m */,
+				1895BF401337C1A100EF37F4 /* SHPolygonEx.h */,
+				1895BF411337C1A100EF37F4 /* SHPolygonEx.m */,
 			);
 			name = Shilo;
 			sourceTree = "<group>";
@@ -610,6 +616,7 @@
 				5D220DE7133266E4006FAF5E /* SHSwipeEvent.h in Headers */,
 				5D220DE9133266E4006FAF5E /* SHThumbstick.h in Headers */,
 				5D220DEC133278A5006FAF5E /* SHInputField.h in Headers */,
+				1895BF421337C1A200EF37F4 /* SHPolygonEx.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -772,6 +779,7 @@
 				5D220DE8133266E4006FAF5E /* SHSwipeEvent.m in Sources */,
 				5D220DEA133266E4006FAF5E /* SHThumbstick.m in Sources */,
 				5D220DEE133278BA006FAF5E /* SHInputField.m in Sources */,
+				1895BF431337C1A200EF37F4 /* SHPolygonEx.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
