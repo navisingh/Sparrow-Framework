@@ -51,4 +51,4 @@
 #import "SHShakeEvent.h"
 #import "SHSwipeEvent.h"
 #import "SHThumbstick.h"
-#import "SHPolygonEx.h"
+#import "ExPolygon.h"

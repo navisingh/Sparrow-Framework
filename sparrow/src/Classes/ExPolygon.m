@@ -2,14 +2,13 @@
 //  SHPolygon.m
 //  Sparrow
 //
-//  Created by Shilo White on 2/6/11.
-//  Copyright 2011 Shilocity Productions. All rights reserved.
+//  Created by Navi Singh on 3/22/11.
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the Simplified BSD License.
 //
 
-#import "SHPolygonEx.h"
+#import "ExPolygon.h"
 #import "SPMacros.h"
 #import "SPRenderSupport.h"
 
@@ -17,7 +16,7 @@
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
 
-@implementation SHPolygonEx
+@implementation ExPolygon
 
 @synthesize fill = mFill;
 @synthesize innerColor = mInnerColor;
@@ -35,13 +34,19 @@
 		mWidth = width;
 		mHeight = height;
         
+ 		mSides = 3;
+        int size = mSides * sizeof(CGPoint);
+        free(mVertexCoords);
+        mVertexCoords = malloc(size);
+        free(mBorderVertexCoords);
+        mBorderVertexCoords = malloc(size);
+
         mVertexCoords[0] = mBorderVertexCoords[0] = 0;
         mVertexCoords[1] = mBorderVertexCoords[1] = 0;
         mVertexCoords[2] = mBorderVertexCoords[2] = mWidth;
         mVertexCoords[3] = mBorderVertexCoords[3] = 0;
         mVertexCoords[4] = mBorderVertexCoords[4] = 0;
         mVertexCoords[5] = mBorderVertexCoords[5] = mHeight;
-		mSides = 3;
         
 		mFill = YES;
 		self.color = SP_WHITE;
@@ -52,17 +57,28 @@
     }
     return self;
 }
-
-+ (SHPolygonEx *)polygon {
-	return [[[SHPolygonEx alloc] initWithWidth:32 height:32] autorelease];
+- (void)dealloc
+{
+    free(mVertexCoords);
+    free(mBorderVertexCoords);
 }
 
-+ (SHPolygonEx *)polygonWithWidth:(float)width height:(float)height {
-	return [[[SHPolygonEx alloc] initWithWidth:width height:height] autorelease];
++ (ExPolygon *)polygon {
+	return [[[ExPolygon alloc] initWithWidth:32 height:32] autorelease];
+}
+
++ (ExPolygon *)polygonWithWidth:(float)width height:(float)height {
+	return [[[ExPolygon alloc] initWithWidth:width height:height] autorelease];
 }
 
 - (void)setVertices:(CGPoint [])vertices count:(int)count
 {
+    int size = count * sizeof(CGPoint);
+    free(mVertexCoords);
+    mVertexCoords = malloc(size);
+    free(mBorderVertexCoords);
+    mBorderVertexCoords = malloc(size);
+    
     for(int n=0; n < count; ++n)
     {
         mVertexCoords[n*2] = mBorderVertexCoords[n*2] = vertices[n].x;
