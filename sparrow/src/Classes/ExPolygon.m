@@ -1,5 +1,5 @@
 //
-//  SHPolygon.m
+//  ExPolygon.m
 //  Sparrow
 //
 //  Created by Navi Singh on 3/22/11.
@@ -7,6 +7,21 @@
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the Simplified BSD License.
 //
+
+/*
+ Primitive Flag 	Description
+ GL_POINTS 	        A point is placed at each vertex.
+ GL_LINES 	        A line is drawn for every pair of vertices that are given.
+ GL_LINE_STRIP 	    A continuous set of lines are drawn. After the first vertex, a line is drawn between every 
+                    successive vertex     and the vertex before it.
+ GL_LINE_LOOP    	This is the same as GL_LINE_STRIP except that the start and end vertices are connected as well.
+ GL_TRIANGLES 	    For every triplet of vertices, a triangle is drawn with corners specified by the coordinates of
+                    the vertices.
+ GL_TRIANGLE_STRIP 	After the first 2 vertices, every successive vertex uses the previous 2 vertices to draw a triangle.
+ GL_TRIANGLE_FAN 	After the first 2 vertices, every successive vertex uses the previous vertex and the first vertex to
+                    draw a triangle. This is used to draw cone-like shapes.
+ 
+ */
 
 #import "ExPolygon.h"
 #import "SPMacros.h"
@@ -43,8 +58,10 @@
 
         mVertexCoords[0] = mBorderVertexCoords[0] = 0;
         mVertexCoords[1] = mBorderVertexCoords[1] = 0;
+        
         mVertexCoords[2] = mBorderVertexCoords[2] = mWidth;
         mVertexCoords[3] = mBorderVertexCoords[3] = 0;
+
         mVertexCoords[4] = mBorderVertexCoords[4] = 0;
         mVertexCoords[5] = mBorderVertexCoords[5] = mHeight;
         
@@ -61,6 +78,7 @@
 {
     free(mVertexCoords);
     free(mBorderVertexCoords);
+    [super dealloc];
 }
 
 + (ExPolygon *)polygon {
@@ -71,8 +89,20 @@
 	return [[[ExPolygon alloc] initWithWidth:width height:height] autorelease];
 }
 
-- (void)setVertices:(CGPoint [])vertices count:(int)count
+- (void)setVertices:(CGPoint [])vertices count:(int)count fillMode:(int)fillMode
 {
+    switch (fillMode) {
+        case GL_TRIANGLES:
+        case GL_TRIANGLE_STRIP:
+        case GL_TRIANGLE_FAN:
+            mFillMode = fillMode;
+            break;
+            
+        default:
+            mFillMode = GL_TRIANGLE_FAN;
+            break;
+    }
+    
     int size = count * sizeof(CGPoint);
     free(mVertexCoords);
     mVertexCoords = malloc(size);
@@ -113,7 +143,7 @@
 	
 	glVertexPointer(2, GL_FLOAT, 0, mVertexCoords);
 	glColorPointer(4, GL_UNSIGNED_BYTE, 0, colors);
-	glDrawArrays(GL_TRIANGLE_FAN, 0, mSides+2);
+	glDrawArrays(mFillMode, 0, mSides+2);
 }
 
 - (void)renderBorder:(SPRenderSupport *)support alpha:(float)alpha {

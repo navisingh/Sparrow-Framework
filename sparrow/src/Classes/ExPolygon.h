@@ -17,8 +17,6 @@
 @protected
     float *mVertexCoords;
     float *mBorderVertexCoords;
-//	float mVertexCoords[724];
-//	float mBorderVertexCoords[724];
 	float mWidth;
 	float mHeight;
 	int mSides;
@@ -28,6 +26,7 @@
 	BOOL mBorder;
     uint mBorderColor;
 	float mBorderWidth;
+    int   mFillMode;
 }
 
 @property (nonatomic, assign) BOOL fill;
@@ -41,7 +40,8 @@
 - (id)initWithWidth:(float)width height:(float)height;
 + (ExPolygon *)polygon;
 + (ExPolygon *)polygonWithWidth:(float)width height:(float)height;
-- (void)setVertices:(CGPoint [])vertices count:(int)count;
+//fillMode = GL_TRIANGLES | GL_TRIANGLE_STRIP | GL_TRIANGLE_FAN
+- (void)setVertices:(CGPoint [])vertices count:(int)count fillMode:(int)fillMode;
 - (void)renderFill:(SPRenderSupport *)support alpha:(float)alpha;
 - (void)renderBorder:(SPRenderSupport *)support alpha:(float)alpha;
 
