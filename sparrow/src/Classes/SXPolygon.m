@@ -23,7 +23,7 @@
  
  */
 
-#import "ExPolygon.h"
+#import "SXPolygon.h"
 #import "SPMacros.h"
 #import "SPRenderSupport.h"
 
@@ -31,7 +31,7 @@
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
 
-@implementation ExPolygon
+@implementation SXPolygon
 
 @synthesize fill = mFill;
 @synthesize innerColor = mInnerColor;
@@ -81,12 +81,12 @@
     [super dealloc];
 }
 
-+ (ExPolygon *)polygon {
-	return [[[ExPolygon alloc] initWithWidth:32 height:32] autorelease];
++ (SXPolygon *)polygon {
+	return [[[SXPolygon alloc] initWithWidth:32 height:32] autorelease];
 }
 
-+ (ExPolygon *)polygonWithWidth:(float)width height:(float)height {
-	return [[[ExPolygon alloc] initWithWidth:width height:height] autorelease];
++ (SXPolygon *)polygonWithWidth:(float)width height:(float)height {
+	return [[[SXPolygon alloc] initWithWidth:width height:height] autorelease];
 }
 
 - (void)setVertices:(CGPoint [])vertices count:(int)count fillMode:(int)fillMode

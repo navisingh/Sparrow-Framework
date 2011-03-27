@@ -13,7 +13,7 @@
 
 @class SPRenderSupport;
 
-@interface ExPolygon : SPDisplayObject {
+@interface SXPolygon : SPDisplayObject {
 @protected
     float *mVertexCoords;
     float *mBorderVertexCoords;
@@ -38,8 +38,8 @@
 @property (nonatomic, assign) float borderWidth;
 
 - (id)initWithWidth:(float)width height:(float)height;
-+ (ExPolygon *)polygon;
-+ (ExPolygon *)polygonWithWidth:(float)width height:(float)height;
++ (SXPolygon *)polygon;
++ (SXPolygon *)polygonWithWidth:(float)width height:(float)height;
 //fillMode = GL_TRIANGLES | GL_TRIANGLE_STRIP | GL_TRIANGLE_FAN
 - (void)setVertices:(CGPoint [])vertices count:(int)count fillMode:(int)fillMode;
 - (void)renderFill:(SPRenderSupport *)support alpha:(float)alpha;
