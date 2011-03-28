@@ -165,7 +165,7 @@
     SPMatrix *transformationMatrix = [self transformationMatrixToSpace:targetCoordinateSpace];
     SPPoint *point = [[SPPoint alloc] init];
     
-	float tempVertexCoords[8];
+	float tempVertexCoords[8]={0};
 	tempVertexCoords[2] = mWidth;
 	tempVertexCoords[5] = mHeight;
 	tempVertexCoords[6] = mWidth;

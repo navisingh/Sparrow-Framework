@@ -32,7 +32,7 @@
 }
 
 - (id)initWithWidth:(float)width height:(float)height {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		mWidth = width;
 		mHeight = height;
 		
@@ -66,7 +66,7 @@
 	mVertexCoords[1] = heightRadius;
 	
 	int count=2;
-	for (GLfloat i = i; i < 360.0f; i+=360.0f/mSides)
+	for (GLfloat i = 0; i < 360.0f; i+=360.0f/mSides)
 	{
 		if (count == 2) {
 			mVertexCoords[mSides*2+2] = mBorderVertexCoords[mSides*2+2] = cos(SP_D2R(i+mCenterRotation+rotationOffset)) * widthRadius + widthRadius;
@@ -162,7 +162,7 @@
     SPMatrix *transformationMatrix = [self transformationMatrixToSpace:targetCoordinateSpace];
     SPPoint *point = [[SPPoint alloc] init];
     
-	float tempVertexCoords[8];
+	float tempVertexCoords[8]={0};
 	tempVertexCoords[2] = mWidth;
 	tempVertexCoords[5] = mHeight;
 	tempVertexCoords[6] = mWidth;

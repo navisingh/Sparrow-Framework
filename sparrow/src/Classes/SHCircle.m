@@ -31,7 +31,7 @@
 }
 
 - (id)initWithWidth:(float)width height:(float)height {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		mWidth = width;
 		mHeight = height;
 		
@@ -123,16 +123,16 @@
     SPMatrix *transformationMatrix = [self transformationMatrixToSpace:targetCoordinateSpace];
     SPPoint *point = [[SPPoint alloc] init];
     
-	float tempVertexCoords[8];
+	float tempVertexCoords[8] = {0};
 	tempVertexCoords[2] = mWidth;
 	tempVertexCoords[5] = mHeight;
 	tempVertexCoords[6] = mWidth;
 	tempVertexCoords[7] = mHeight;
 	
     float minX = FLT_MAX, maxX = -FLT_MAX, minY = FLT_MAX, maxY = -FLT_MAX;
-    for (int i=0; i<4; ++i) {
-        point.x = tempVertexCoords[2*i];
-        point.y = tempVertexCoords[2*i+1];
+    for (int n=0; n<4; ++n) {
+        point.x = tempVertexCoords[2*n];
+        point.y = tempVertexCoords[2*n+1];
         SPPoint *transformedPoint = [transformationMatrix transformPoint:point];
         float tfX = transformedPoint.x; 
         float tfY = transformedPoint.y;

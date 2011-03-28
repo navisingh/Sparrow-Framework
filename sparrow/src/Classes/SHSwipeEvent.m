@@ -28,7 +28,7 @@
 }
 
 - (id)initWithType:(NSString *)type location:(SPPoint *)location direction:(SHSwipeDirection)direction bubbles:(BOOL)bubbles {
-	if (self = [super initWithType:type bubbles:bubbles]) {        
+	if ((self = [super initWithType:type bubbles:bubbles])) {        
 		mLocation = location;
 		mDirection = direction;
     }
@@ -52,7 +52,7 @@
 }
 
 - (SHSwipeDirection)directionInSpace:(SPDisplayObject *)space {
-	float swipeAngle;
+	float swipeAngle = 0;
 	if (mDirection == SHSwipeDirectionUp) {
 		swipeAngle = 0;
 	} else if (mDirection == SHSwipeDirectionDown) {

@@ -159,7 +159,8 @@
 
 - (float *)scew
 {
-	return (float[4]){mScewX1, mScewY1, mScewX2, mScewY2};
+    //this code is wrong.
+	return NULL; //(float[4]){mScewX1, mScewY1, mScewX2, mScewY2};
 }
 
 - (void)setScewX1:(float)scewX1
