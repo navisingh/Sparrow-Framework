@@ -39,6 +39,11 @@
 @synthesize border = mBorder;
 @synthesize borderColor = mBorderColor;
 @synthesize borderWidth = mBorderWidth;
+@synthesize vertices;
+
+- (float *)vertices{
+    return mVertexCoords;
+}
 
 - (id)init {
 	return [self initWithWidth:32 height:32];

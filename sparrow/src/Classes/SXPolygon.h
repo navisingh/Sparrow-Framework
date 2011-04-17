@@ -36,6 +36,7 @@
 @property (nonatomic, assign) BOOL border;
 @property (nonatomic, assign) uint borderColor;
 @property (nonatomic, assign) float borderWidth;
+@property (nonatomic, readonly) float *vertices;
 
 - (id)initWithWidth:(float)width height:(float)height;
 + (SXPolygon *)polygon;
