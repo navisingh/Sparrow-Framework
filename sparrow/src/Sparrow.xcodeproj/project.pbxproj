@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18314A5E135CA2DF004E3950 /* SXCheckbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 18314A5C135CA2DF004E3950 /* SXCheckbox.h */; };
+		18314A5F135CA2DF004E3950 /* SXCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18314A5D135CA2DF004E3950 /* SXCheckbox.m */; };
 		1895BF421337C1A200EF37F4 /* SXPolygon.h in Headers */ = {isa = PBXBuildFile; fileRef = 1895BF401337C1A100EF37F4 /* SXPolygon.h */; };
 		1895BF431337C1A200EF37F4 /* SXPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 1895BF411337C1A100EF37F4 /* SXPolygon.m */; };
 		5D220DDD133266E4006FAF5E /* SHCircle.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D220DCF133266E4006FAF5E /* SHCircle.h */; };
@@ -123,6 +125,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18314A5C135CA2DF004E3950 /* SXCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXCheckbox.h; sourceTree = "<group>"; };
+		18314A5D135CA2DF004E3950 /* SXCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXCheckbox.m; sourceTree = "<group>"; };
 		1895BF401337C1A100EF37F4 /* SXPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXPolygon.h; sourceTree = "<group>"; };
 		1895BF411337C1A100EF37F4 /* SXPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXPolygon.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -392,6 +396,8 @@
 				5D8F8265133ECEE700035DD5 /* SXCroppedImage.m */,
 				5D8F8268133ED04A00035DD5 /* SHSplashScreen.h */,
 				5D8F8269133ED04C00035DD5 /* SHSplashScreen.m */,
+				18314A5C135CA2DF004E3950 /* SXCheckbox.h */,
+				18314A5D135CA2DF004E3950 /* SXCheckbox.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -638,6 +644,7 @@
 				5D8F8262133ECE0400035DD5 /* SXGauge.h in Headers */,
 				5D8F8266133ECEE900035DD5 /* SXCroppedImage.h in Headers */,
 				5D8F826A133ED05000035DD5 /* SHSplashScreen.h in Headers */,
+				18314A5E135CA2DF004E3950 /* SXCheckbox.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -804,6 +811,7 @@
 				5D8F8263133ECE0400035DD5 /* SXGauge.m in Sources */,
 				5D8F8267133ECEE900035DD5 /* SXCroppedImage.m in Sources */,
 				5D8F826B133ED05000035DD5 /* SHSplashScreen.m in Sources */,
+				18314A5F135CA2DF004E3950 /* SXCheckbox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
