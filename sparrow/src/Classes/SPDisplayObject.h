@@ -183,6 +183,7 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, assign) int tag;
 
+/// Note: Make sure you set heigth, width before you set originX, originY.
 @property (nonatomic, assign) float originX;
 @property (nonatomic, assign) float originY;
 @property (nonatomic, assign) float originPixelX;
