@@ -16,9 +16,18 @@
     SPImage *checkedImage_;
     BOOL checked_;
     short offset_;
+    
+    SPTextField *label_;
+    NSString *fontName_;    
+    float fontSize_;
+    uint fontColor_;
 }
 @property (nonatomic, assign) BOOL checked;
 @property (nonatomic, assign) short offset;
+@property (nonatomic, copy) NSString *label;
+@property (nonatomic, copy) NSString *fontName;
+@property (nonatomic, assign) float fontSize;
+@property (nonatomic, assign) uint color;
 
 - (id) initWithTexturesUnchecked:(SPTexture *)unchecked Checked:(SPTexture *)checked;
 /// Factory method.
