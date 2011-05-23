@@ -3,7 +3,7 @@
 //  Sparrow
 //
 //  Created by Daniel Sperl on 15.03.09.
-//  Copyright 2009 Incognitek. All rights reserved.
+//  Copyright 2011 Gamua. All rights reserved.
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the Simplified BSD License.
@@ -22,6 +22,8 @@
 
 @synthesize x = mX;
 @synthesize y = mY;
+@synthesize pivotX = mPivotX;
+@synthesize pivotY = mPivotY;
 @synthesize scaleX = mScaleX;
 @synthesize scaleY = mScaleY;
 @synthesize rotation = mRotationZ;
@@ -185,7 +187,7 @@
     return [self boundsInSpace:mParent];
 }
 
-- (SPDisplayObject*)hitTestPoint:(SPPoint*)localPoint forTouch:(BOOL)isTouch;
+- (SPDisplayObject*)hitTestPoint:(SPPoint*)localPoint forTouch:(BOOL)isTouch
 {
     // on a touch test, invisible or untouchable objects cause the test to fail
     if (isTouch && (!mVisible || !mTouchable)) return nil;
@@ -306,6 +308,7 @@
 	
     SPMatrix *matrix = [[SPMatrix alloc] init];
     
+    if (mPivotX != 0.0f || mPivotY != 0.0f) [matrix translateXBy:-mPivotX yBy:-mPivotY];
     if (mScaleX != 1.0f || mScaleY != 1.0f) [matrix scaleXBy:mScaleX yBy:mScaleY];
     if (mRotationZ != 0.0f) {
 		if (mOriginPixelX || mOriginPixelY) [matrix translateXBy:-mOriginPixelX yBy:-mOriginPixelY];

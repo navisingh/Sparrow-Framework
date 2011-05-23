@@ -3,7 +3,7 @@
 //  Sparrow
 //
 //  Created by Daniel Sperl on 29.06.09.
-//  Copyright 2009 Incognitek. All rights reserved.
+//  Copyright 2011 Gamua. All rights reserved.
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the Simplified BSD License.
@@ -44,6 +44,7 @@ static NSMutableDictionary *bitmapFonts = nil;
 @synthesize vAlign = mVAlign;
 @synthesize border = mBorder;
 @synthesize color = mColor;
+@synthesize kerning = mKerning;
 @synthesize shadow = mShadow;
 @synthesize shadowColor = mShadowColor;
 @synthesize shadowOffsetX = mShadowOffsetX;
@@ -59,6 +60,8 @@ static NSMutableDictionary *bitmapFonts = nil;
         mColor = color;
         mHAlign = SPHAlignCenter;
         mVAlign = SPVAlignCenter;
+        mBorder = NO;        
+		mKerning = YES;
         mBorder = NO;    
         mShadow = NO;
 		mShadowColor = 0x000000;
@@ -82,7 +85,7 @@ static NSMutableDictionary *bitmapFonts = nil;
     return self;
 } 
 
-- (id)initWithWidth:(float)width height:(float)height text:(NSString*)text;
+- (id)initWithWidth:(float)width height:(float)height text:(NSString*)text
 {
     return [self initWithWidth:width height:height text:text fontName:SP_DEFAULT_FONT_NAME
                      fontSize:SP_DEFAULT_FONT_SIZE color:SP_DEFAULT_FONT_COLOR];   
@@ -195,12 +198,20 @@ static NSMutableDictionary *bitmapFonts = nil;
  
     SPDisplayObject *contents = [bitmapFont createDisplayObjectWithWidth:mHitArea.width 
         height:mHitArea.height text:mText fontSize:mFontSize color:mColor
-        hAlign:mHAlign vAlign:mVAlign border:mBorder];    
+        hAlign:mHAlign vAlign:mVAlign border:mBorder kerning:mKerning];    
 
 	if (mShadow) {
 		SPDisplayObject *shadowContents = [bitmapFont createDisplayObjectWithWidth:mHitArea.width 
-                                                                            height:mHitArea.height text:mText fontSize:mFontSize color:mShadowColor
-                                                                            hAlign:mHAlign vAlign:mVAlign border:mBorder];
+                                                                            height:mHitArea.height 
+                                                                              text:mText 
+                                                                          fontSize:mFontSize 
+                                                                             color:mShadowColor
+                                                                            hAlign:mHAlign                                                                          
+                                                                            vAlign:mVAlign 
+                                                                            border:mBorder
+                                                                           kerning:mKerning];
+        
+
 		shadowContents.x = mShadowOffsetX;
 		shadowContents.y = mShadowOffsetY;
 		[(SPDisplayObjectContainer *)contents addChild:shadowContents atIndex:0];
@@ -316,6 +327,15 @@ static NSMutableDictionary *bitmapFonts = nil;
         else 
             mRequiresRedraw = YES;
     }
+}
+
+- (void)setKerning:(BOOL)kerning
+{
+	if (kerning != mKerning)
+	{
+		mKerning = kerning;
+		mRequiresRedraw = YES;
+	}
 }
 
 - (void)setShadowColor:(uint)shadowColor

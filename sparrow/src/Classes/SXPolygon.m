@@ -94,7 +94,7 @@
 	return [[[SXPolygon alloc] initWithWidth:width height:height] autorelease];
 }
 
-- (void)setVertices:(CGPoint [])vertices count:(int)count fillMode:(int)fillMode
+- (void)setVertices:(CGPoint [])v count:(int)count fillMode:(int)fillMode
 {
     switch (fillMode) {
         case GL_TRIANGLES:
@@ -116,8 +116,8 @@
     
     for(int n=0; n < count; ++n)
     {
-        mVertexCoords[n*2] = mBorderVertexCoords[n*2] = vertices[n].x;
-        mVertexCoords[n*2+1] = mBorderVertexCoords[n*2+1] = vertices[n].y;
+        mVertexCoords[n*2] = mBorderVertexCoords[n*2] = v[n].x;
+        mVertexCoords[n*2+1] = mBorderVertexCoords[n*2+1] = v[n].y;
     }
     mSides = count;
 }
