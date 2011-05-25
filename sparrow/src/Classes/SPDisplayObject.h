@@ -121,6 +121,9 @@
 /// Returns the object that is found topmost on a point in local coordinates, or nil if the test fails.
 - (SPDisplayObject*)hitTestPoint:(SPPoint*)localPoint forTouch:(BOOL)isTouch;
 
+/// Move Pivot to center of object instead of the top-left. 
+- (void) movePivotToCenter;
+
 /// ----------------
 /// @name Properties
 /// ----------------

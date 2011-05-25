@@ -246,8 +246,10 @@
     
     mScaleX = 1.0f;
     float actualWidth = self.width;
-    if (actualWidth != 0.0f) self.scaleX = value / actualWidth;
-    else                     self.scaleX = 1.0f;
+    if (actualWidth != 0.0f) 
+        self.scaleX = value / actualWidth;
+    else                     
+        self.scaleX = 1.0f;
 }
 
 - (float)height
@@ -259,8 +261,10 @@
 {
     mScaleY = 1.0f;
     float actualHeight = self.height;
-    if (actualHeight != 0.0f) self.scaleY = value / actualHeight;
-    else                      self.scaleY = 1.0f;
+    if (actualHeight != 0.0f) 
+        self.scaleY = value / actualHeight;
+    else                      
+        self.scaleY = 1.0f;
 }
 
 - (void)setRotation:(float)value
@@ -274,6 +278,12 @@
 - (void)setAlpha:(float)value
 {
     mAlpha = MAX(0.0f, MIN(1.0f, value));
+}
+
+- (void) movePivotToCenter
+{
+    mPivotX = self.width / 2.0f;
+    mPivotY = self.height / 2.0f;
 }
 
 - (SPDisplayObject*)root
