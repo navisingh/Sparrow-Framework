@@ -55,22 +55,12 @@
         mVisible = YES;
         mTouchable = YES;
 		mLoopable = YES;
-		
-		if (SPStage.defaultOriginX || SPStage.defaultOriginY) [self addEventListener:@selector(setDefaultOrigin:) atObject:self forType:SP_EVENT_TYPE_ADDED];
     }
     return self;
 }
 
-- (void)setDefaultOrigin:(SPEvent *)event
-{
-	[self removeEventListener:@selector(setDefaultOrigin:) atObject:self forType:SP_EVENT_TYPE_ADDED];
-	if (SPStage.defaultOriginX && !mOriginX) self.originX = SPStage.defaultOriginX;
-	if (SPStage.defaultOriginY && !mOriginY) self.originY = SPStage.defaultOriginY;
-}
-
 - (void)dealloc
 {
-	[self removeEventListener:@selector(setDefaultOrigin:) atObject:self forType:SP_EVENT_TYPE_ADDED];
     [mName release];
     [super dealloc];
 }
@@ -303,138 +293,16 @@
 
 - (SPMatrix*)transformationMatrix
 {
-	float x = mX - mOriginPixelX;
-	float y = mY - mOriginPixelY;
-	
     SPMatrix *matrix = [[SPMatrix alloc] init];
     
     if (mPivotX != 0.0f || mPivotY != 0.0f) [matrix translateXBy:-mPivotX yBy:-mPivotY];
     if (mScaleX != 1.0f || mScaleY != 1.0f) [matrix scaleXBy:mScaleX yBy:mScaleY];
-    if (mRotationZ != 0.0f) {
-		if (mOriginPixelX || mOriginPixelY) [matrix translateXBy:-mOriginPixelX yBy:-mOriginPixelY];
-		[matrix rotateBy:mRotationZ];
-		if (mOriginPixelX || mOriginPixelY) [matrix translateXBy:mOriginPixelX yBy:mOriginPixelY];
-	}
-    if (x != 0.0f || y != 0.0f) [matrix translateXBy:x yBy:y];
+    if (mRotationZ != 0.0f) [matrix rotateBy:mRotationZ];
+    if (mX != 0.0f || mY != 0.0f) [matrix translateXBy:mX yBy:mY];
     
     return [matrix autorelease];
 }
 
-- (void)setScaleX:(float)scaleX
-{
-	if (scaleX != mScaleX) {
-		mScaleX = scaleX;
-		mOriginPixelX = self.realWidth * mOriginX;
-	}
-}
-
-- (void)setScaleY:(float)scaleY
-{
-	if (scaleY != mScaleY) {
-		mScaleY = scaleY;
-		mOriginPixelY = self.realHeight * mOriginY;
-	}
-}
-
-- (void)setOrigin:(float)origin
-{
-	if (origin < 0 || origin > 1) [NSException raise:NSInvalidArgumentException format:@"Origin must have a float value between 0 and 1.", NSStringFromSelector(_cmd)];
-	self.originX = self.originY = origin;
-}
-
-- (void)setOriginPixel:(float)originPixel
-{
-	if (originPixel < 0 || originPixel > self.width || originPixel > self.height) [NSException raise:NSInvalidArgumentException format:@"OriginPixel must have a float value between 0 and SPDisplayObject's width/height.", NSStringFromSelector(_cmd)];
-	self.originPixelX = self.originPixelY = originPixel;
-}
-
-- (void)setOriginX:(float)originX
-{
-	if (originX < 0 || originX > 1) [NSException raise:NSInvalidArgumentException format:@"OriginX must have a float value between 0 and 1.", NSStringFromSelector(_cmd)];
-	if (originX != mOriginX) {
-		mOriginX = originX;
-		mOriginPixelX = self.realWidth * mOriginX;
-	}
-}
-
-- (float)originX
-{
-	return mOriginX;
-}
-
-- (void)setOriginY:(float)originY
-{
-	if (originY < 0 || originY > 1) [NSException raise:NSInvalidArgumentException format:@"OriginY must have a float value between 0 and 1.", NSStringFromSelector(_cmd)];
-	if (originY != mOriginY) {
-		mOriginY = originY;
-		mOriginPixelY = self.realHeight * mOriginY;
-	}
-}
-
-- (float)originY
-{
-	return mOriginY;
-}
-
-- (void)setOriginPixelX:(float)originPixelX
-{
-	if (originPixelX < 0 || originPixelX > self.width) [NSException raise:NSInvalidArgumentException format:@"OriginPixelX must have a float value between 0 and SPDisplayObject's width.", NSStringFromSelector(_cmd)];
-	if (originPixelX != mOriginPixelX) {
-		mOriginPixelX = originPixelX;
-		mOriginX = mOriginPixelX / self.realWidth;
-	}
-}
-
-- (float)originPixelX
-{
-	return mOriginPixelX;
-}
-
-- (void)setOriginPixelY:(float)originPixelY
-{
-	if (originPixelY < 0 || originPixelY > self.height) [NSException raise:NSInvalidArgumentException format:@"OriginPixelY must have a float value between 0 and SPDisplayObject's height.", NSStringFromSelector(_cmd)];
-	if (originPixelY != mOriginPixelY) {
-		mOriginPixelY = originPixelY;
-		mOriginY = mOriginPixelY / self.realHeight;
-	}
-}
-
-- (float)originPixelY
-{
-	return mOriginPixelY;
-}
-
-- (float)realWidth
-{
-	float realWidth;
-	
-	if (mRotationZ) {
-		float rotationZ = mRotationZ;
-		mRotationZ = 0;
-		realWidth = self.width;
-		mRotationZ = rotationZ;
-	} else {
-		realWidth = self.width;
-	}
-	
-	return realWidth;
-}
-
-- (float)realHeight
-{
-	float realHeight;
-	
-	if (mRotationZ) {
-		float rotationZ = mRotationZ;
-		mRotationZ = 0;
-		realHeight = self.height;
-		mRotationZ = rotationZ;
-	} else {
-		realHeight = self.height;
-	}
-	
-	return realHeight;
-}
 @end
 
 // -------------------------------------------------------------------------------------------------

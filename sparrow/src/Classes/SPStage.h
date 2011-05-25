@@ -96,13 +96,6 @@
 @property (nonatomic, assign) BOOL transparent;
 @property (nonatomic, assign) BOOL showFrameRate;
 
-
-+ (void)setDefaultOrigin:(float)value;
-+ (void)setDefaultOriginX:(float)value;
-+ (float)defaultOriginX;
-+ (void)setDefaultOriginY:(float)value;
-+ (float)defaultOriginY;
-
 @end
 
 

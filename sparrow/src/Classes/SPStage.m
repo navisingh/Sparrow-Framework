@@ -24,8 +24,6 @@
 static BOOL supportHighResolutions = NO;
 static float contentScaleFactor = -1;
 static NSMutableArray *stages = NULL;
-static float defaultOriginX;
-static float defaultOriginY;
 
 // --- class implementation ------------------------------------------------------------------------
 
@@ -188,39 +186,6 @@ static float defaultOriginY;
     if (stages.count == 0) { [stages release]; stages = NULL; }    
     
     [super dealloc];
-}
-
-+ (void)setDefaultOrigin:(float)value {
-	if (value < 0 || value > 1) [NSException raise:NSInvalidArgumentException format:@"Default Origin must have a float value between 0 and 1.", NSStringFromSelector(_cmd)];
-    
-	[SPStage setDefaultOriginX:value];
-	[SPStage setDefaultOriginY:value];
-}
-
-+ (void)setDefaultOriginX:(float)value
-{
-	if (value < 0 || value > 1) [NSException raise:NSInvalidArgumentException format:@"Default OriginX must have a float value between 0 and 1.", NSStringFromSelector(_cmd)];
-	if (value != defaultOriginX) {
-		defaultOriginX = value;
-	}
-}
-
-+ (float)defaultOriginX
-{
-	return defaultOriginX;
-}
-
-+ (void)setDefaultOriginY:(float)value
-{
-	if (value < 0 || value > 1) [NSException raise:NSInvalidArgumentException format:@"Default OriginY must have a float value between 0 and 1.", NSStringFromSelector(_cmd)];
-	if (value != defaultOriginY) {
-		defaultOriginY = value;
-	}
-}
-
-+ (float)defaultOriginY
-{
-	return defaultOriginY;
 }
 
 @end
