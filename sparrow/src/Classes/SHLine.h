@@ -33,21 +33,33 @@
 @property (nonatomic, assign) float startAlpha;
 @property (nonatomic, assign) float endAlpha;
 @property (nonatomic, assign) float thickness;
+@property (nonatomic, readonly) float slope; //radians
+@property (nonatomic, readonly) float angle; //degrees
 
-- (SHLine *)initWithSize:(float)length;
-//- (SHLine *)initWithLength:(float)length;
-- (SHLine *)initWithLength:(float)length andThickness:(float)thickness;
+//horizontal line.
+- (SHLine *)initWithLength:(float)length;
+- (SHLine *)initWithLength:(float)length Angle:(float)degrees;
+- (SHLine *)initWithLength:(float)length Angle:(float)degrees andThickness:(float)thickness;
+
+//point, slope
+- (SHLine *)initWithVertex:(float)x1 :(float)y1 Length:(float)length Angle:(float)degrees;
+- (SHLine *)initWithVertex:(float)x1 :(float)y1 Length:(float)length Angle:(float)degrees andThickness:(float)thickness;
+
+//point, point
 - (SHLine *)initWithCoords:(float)x1 :(float)y1 :(float)x2 :(float)y2;
 - (SHLine *)initWithCoords:(float)x1 :(float)y1 :(float)x2 :(float)y2 andThickness:(float)thickness;
 
-+ (SHLine *)lineWithLength:(float)length;
-+ (SHLine *)lineWithLength:(float)length andThickness:(float)thickness;
-+ (SHLine *)lineWithCoords:(float)x1 :(float)y1 :(float)x2 :(float)y2;
-+ (SHLine *)lineWithCoords:(float)x1 :(float)y1 :(float)x2 :(float)y2 andThickness:(float)thickness;
+//factory methods for the three line initializers.
++ (SHLine *)lineWithLength:(float)length Angle:(float)degrees;
++ (SHLine *)lineWithLength:(float)length Angle:(float)degrees andThickness:(float)thickness;
 
++ (SHLine *)lineWithVertex:(float)x1 :(float)y1 Length:(float)length;
++ (SHLine *)lineWithVertex:(float)x1 :(float)y1 Length:(float)length Angle:(float)degrees;
++ (SHLine *)lineWithVertex:(float)x1 :(float)y1 Length:(float)length andThickness:(float)thickness;
++ (SHLine *)lineWithVertex:(float)x1 :(float)y1 Length:(float)length Angle:(float)degrees andThickness:(float)thickness;
 
-//initialize another line with the coords (x1, y1, x2, y2)
 + (SHLine *)lineWithVertices:(float)x1 :(float)y1 :(float)x2 :(float)y2;
 + (SHLine *)lineWithVertices:(float)x1 :(float)y1 :(float)x2 :(float)y2 andThickness:(float)thickness;
+
 
 @end

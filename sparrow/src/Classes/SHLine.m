@@ -10,25 +10,63 @@
 //
 
 #import "SHLine.h"
+#import "SPMacros.h"
 
 @implementation SHLine
 
 @synthesize thickness = mThickness;
+@dynamic angle;
+@dynamic slope;
+
+-(float) slope
+{
+    float deltaY = mVertexCoords[3] - mVertexCoords[1];
+    float deltaX = mVertexCoords[2] - mVertexCoords[0];
+    if (deltaX) 
+        return deltaY / deltaX;
+    
+    return MAXFLOAT;
+}
+
+-(float) angle
+{
+    float deltaY = mVertexCoords[3] - mVertexCoords[1];
+    float deltaX = mVertexCoords[2] - mVertexCoords[0];
+    float radians = atan2f(deltaY, deltaX);
+    
+    return SP_R2D(radians);
+}
 
 - (SHLine *)init {
 	return [self initWithCoords:0:0:50.0f:0 andThickness:1.0f];
 }
 
-- (SHLine *)initWithSize:(float)length {
+- (SHLine *)initWithLength:(float)length {
 	return [self initWithCoords:0:0:length:0 andThickness:1.0f];
 }
 
-/*- (SHLine *)initWithLength:(float)length {
-	return [self initWithCoords:0:0:length:0 andThickness:1.0f];
-}*/
+- (SHLine *)initWithLength:(float)length Angle:(float)degrees{
+	return [self initWithVertex:0:0 Length:length Angle:degrees andThickness:1.0f];
+}
 
-- (SHLine *)initWithLength:(float)length andThickness:(float)thickness {
-	return [self initWithCoords:0:0:length:0 andThickness:thickness];
+- (SHLine *)initWithLength:(float)length Angle:(float)degrees andThickness:(float)thickness{
+	return [self initWithVertex:0:0 Length:length Angle:degrees andThickness:1.0f];
+}
+
+- (SHLine *)initWithVertex:(float)x1 :(float)y1 Length:(float)length Angle:(float)degrees{
+	return [self initWithVertex:x1:y1 Length:length Angle:degrees andThickness:1.0f];
+}
+
+- (SHLine *)initWithVertex:(float)x1 :(float)y1 Length:(float)length andThickness:(float)thickness {
+	return [self initWithVertex:x1:y1 Length:length Angle:0 andThickness:thickness];
+}
+
+- (SHLine *)initWithVertex:(float)x1 :(float)y1 Length:(float)length Angle:(float)degrees andThickness:(float)thickness {
+    float radians = SP_D2R(degrees);
+    float x2 = length * cosf(radians) + x1;
+    float y2 = -length * sinf(radians) + y1;
+    
+	return [self initWithCoords:x1:y1:x2:y2 andThickness:thickness];
 }
 
 - (SHLine *)initWithCoords:(float)x1 :(float)y1 :(float)x2 :(float)y2 {
@@ -40,8 +78,10 @@
 		self.x = x1;
 		self.y = y1;
 		self.color = 0xffffff;
-		mVertexCoords[2] = x2;
-		mVertexCoords[3] = y2;
+        mVertexCoords[0] = 0;
+        mVertexCoords[1] = 0;
+		mVertexCoords[2] = x2-x1; //changed: used to be x2.
+		mVertexCoords[3] = y2-y1; //changed: used to be y2.
 		mVertexAlpha[0] = 1.0f;
 		mVertexAlpha[1] = 1.0f;
 		mThickness = thickness;
@@ -49,28 +89,36 @@
 	return self;
 }
 
-+ (SHLine *)lineWithLength:(float)length {
-	return [[[SHLine alloc] initWithSize:length] autorelease];
++ (SHLine *)lineWithLength:(float)length Angle:(float)degrees{
+	return [[[SHLine alloc] initWithLength:length Angle:degrees andThickness:1.0f] autorelease];
 }
 
-+ (SHLine *)lineWithLength:(float)length andThickness:(float)thickness {
-	return [[[SHLine alloc] initWithLength:length andThickness:thickness] autorelease];
++ (SHLine *)lineWithLength:(float)length Angle:(float)degrees andThickness:(float)thickness {
+	return [[[SHLine alloc] initWithLength:length Angle:degrees andThickness:thickness] autorelease];
 }
 
-+ (SHLine *)lineWithCoords:(float)x1 :(float)y1 :(float)x2 :(float)y2 {
-	return [[[SHLine alloc] initWithCoords:x1:y1:x2:y2] autorelease];
++ (SHLine *)lineWithVertex:(float)x1 :(float)y1 Length:(float)length{
+	return [[[SHLine alloc] initWithVertex: x1:y1 Length:length Angle:0 andThickness:1.0f] autorelease];
 }
 
-+ (SHLine *)lineWithCoords:(float)x1 :(float)y1 :(float)x2 :(float)y2 andThickness:(float)thickness {
-	return [[[SHLine alloc] initWithCoords:x1:y1:x2:y2 andThickness:thickness] autorelease];
++ (SHLine *)lineWithVertex:(float)x1 :(float)y1 Length:(float)length Angle:(float)degrees{
+	return [[[SHLine alloc] initWithVertex: x1:y1 Length:length Angle:degrees andThickness:1.0f] autorelease];
+}
+
++ (SHLine *)lineWithVertex:(float)x1 :(float)y1 Length:(float)length andThickness:(float)thickness {
+	return [[[SHLine alloc] initWithVertex: x1:y1 Length:length Angle:0 andThickness:thickness] autorelease];
+}
+
++ (SHLine *)lineWithVertex:(float)x1 :(float)y1 Length:(float)length Angle:(float)degrees andThickness:(float)thickness {
+	return [[[SHLine alloc] initWithVertex: x1:y1 Length:length Angle:degrees andThickness:thickness] autorelease];
 }
 
 + (SHLine *)lineWithVertices:(float)x1 :(float)y1 :(float)x2 :(float)y2 {
-	return [[[SHLine alloc] initWithCoords:x1:y1:x2-x1:y2-y1] autorelease];
+	return [[[SHLine alloc] initWithCoords:x1:y1:x2:y2] autorelease];
 }
 
 + (SHLine *)lineWithVertices:(float)x1 :(float)y1 :(float)x2 :(float)y2 andThickness:(float)thickness {
-	return [[[SHLine alloc] initWithCoords:x1:y1:x2-x1:y2-y1 andThickness:thickness] autorelease];
+	return [[[SHLine alloc] initWithCoords:x1:y1:x2:y2 andThickness:thickness] autorelease];
 }
 
 - (void)render:(SPRenderSupport *)support {
@@ -79,7 +127,8 @@
     
     [support bindTexture:nil];
     
-	for (int i=0; i<2; i++) colors[i] = [support convertColor:mVertexColors[i] alpha:mVertexAlpha[i]*alpha];
+	for (int i=0; i<2; i++) 
+        colors[i] = [support convertColor:mVertexColors[i] alpha:mVertexAlpha[i]*alpha];
 	
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_COLOR_ARRAY);    
