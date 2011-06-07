@@ -27,6 +27,18 @@
 		5D220DEA133266E4006FAF5E /* SHThumbstick.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D220DDC133266E4006FAF5E /* SHThumbstick.m */; };
 		5D220DEC133278A5006FAF5E /* SHInputField.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D220DEB133278A5006FAF5E /* SHInputField.h */; };
 		5D220DEE133278BA006FAF5E /* SHInputField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D220DED133278BA006FAF5E /* SHInputField.m */; };
+		5D732FD0139E8238003BC955 /* SHFingerTrail.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D732FCE139E8238003BC955 /* SHFingerTrail.h */; };
+		5D732FD1139E8238003BC955 /* SHFingerTrail.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D732FCF139E8238003BC955 /* SHFingerTrail.m */; };
+		5D732FD5139E82ED003BC955 /* SHPinchEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D732FD3139E82ED003BC955 /* SHPinchEvent.h */; };
+		5D732FD6139E82ED003BC955 /* SHPinchEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D732FD4139E82ED003BC955 /* SHPinchEvent.m */; };
+		5D732FDB139E83DE003BC955 /* SXNSDataExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D732FD7139E83DE003BC955 /* SXNSDataExtensions.h */; };
+		5D732FDC139E83DE003BC955 /* SXNSDataExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D732FD8139E83DE003BC955 /* SXNSDataExtensions.m */; };
+		5D732FDD139E83DE003BC955 /* SXParticleSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D732FD9139E83DE003BC955 /* SXParticleSystem.h */; };
+		5D732FDE139E83DE003BC955 /* SXParticleSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D732FDA139E83DE003BC955 /* SXParticleSystem.m */; };
+		5D732FE1139E8442003BC955 /* SHClippedSprite.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D732FDF139E8441003BC955 /* SHClippedSprite.h */; };
+		5D732FE2139E8442003BC955 /* SHClippedSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D732FE0139E8442003BC955 /* SHClippedSprite.m */; };
+		5D732FE5139E85E8003BC955 /* SPDisplayObject+Screenshot.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D732FE3139E85E8003BC955 /* SPDisplayObject+Screenshot.h */; };
+		5D732FE6139E85E8003BC955 /* SPDisplayObject+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D732FE4139E85E8003BC955 /* SPDisplayObject+Screenshot.m */; };
 		5D8F8262133ECE0400035DD5 /* SXGauge.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D8F8260133ECE0200035DD5 /* SXGauge.h */; };
 		5D8F8263133ECE0400035DD5 /* SXGauge.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F8261133ECE0300035DD5 /* SXGauge.m */; };
 		5D8F8266133ECEE900035DD5 /* SXCroppedImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D8F8264133ECEE500035DD5 /* SXCroppedImage.h */; };
@@ -181,7 +193,6 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		28FD14FF0DC6FC520079059D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		DE0456E413882A27005FFBCE /* SPButtonTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPButtonTest.m; sourceTree = "<group>"; };
 		5D220DCF133266E4006FAF5E /* SHCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCircle.h; sourceTree = "<group>"; };
 		5D220DD0133266E4006FAF5E /* SHCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCircle.m; sourceTree = "<group>"; };
 		5D220DD1133266E4006FAF5E /* SHLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHLine.h; sourceTree = "<group>"; };
@@ -198,12 +209,25 @@
 		5D220DDC133266E4006FAF5E /* SHThumbstick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHThumbstick.m; sourceTree = "<group>"; };
 		5D220DEB133278A5006FAF5E /* SHInputField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHInputField.h; sourceTree = "<group>"; };
 		5D220DED133278BA006FAF5E /* SHInputField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHInputField.m; sourceTree = "<group>"; };
+		5D732FCE139E8238003BC955 /* SHFingerTrail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHFingerTrail.h; sourceTree = "<group>"; };
+		5D732FCF139E8238003BC955 /* SHFingerTrail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHFingerTrail.m; sourceTree = "<group>"; };
+		5D732FD3139E82ED003BC955 /* SHPinchEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHPinchEvent.h; sourceTree = "<group>"; };
+		5D732FD4139E82ED003BC955 /* SHPinchEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHPinchEvent.m; sourceTree = "<group>"; };
+		5D732FD7139E83DE003BC955 /* SXNSDataExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXNSDataExtensions.h; sourceTree = "<group>"; };
+		5D732FD8139E83DE003BC955 /* SXNSDataExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXNSDataExtensions.m; sourceTree = "<group>"; };
+		5D732FD9139E83DE003BC955 /* SXParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXParticleSystem.h; sourceTree = "<group>"; };
+		5D732FDA139E83DE003BC955 /* SXParticleSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXParticleSystem.m; sourceTree = "<group>"; };
+		5D732FDF139E8441003BC955 /* SHClippedSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHClippedSprite.h; sourceTree = "<group>"; };
+		5D732FE0139E8442003BC955 /* SHClippedSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHClippedSprite.m; sourceTree = "<group>"; };
+		5D732FE3139E85E8003BC955 /* SPDisplayObject+Screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SPDisplayObject+Screenshot.h"; sourceTree = "<group>"; };
+		5D732FE4139E85E8003BC955 /* SPDisplayObject+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SPDisplayObject+Screenshot.m"; sourceTree = "<group>"; };
 		5D8F8260133ECE0200035DD5 /* SXGauge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXGauge.h; sourceTree = "<group>"; };
 		5D8F8261133ECE0300035DD5 /* SXGauge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXGauge.m; sourceTree = "<group>"; };
 		5D8F8264133ECEE500035DD5 /* SXCroppedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXCroppedImage.h; sourceTree = "<group>"; };
 		5D8F8265133ECEE700035DD5 /* SXCroppedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXCroppedImage.m; sourceTree = "<group>"; };
 		5D8F8268133ED04A00035DD5 /* SHSplashScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSplashScreen.h; sourceTree = "<group>"; };
 		5D8F8269133ED04C00035DD5 /* SHSplashScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSplashScreen.m; sourceTree = "<group>"; };
+		DE0456E413882A27005FFBCE /* SPButtonTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPButtonTest.m; sourceTree = "<group>"; };
 		DE05748611E915A900F3A8A4 /* SPNSExtensionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPNSExtensionsTest.m; sourceTree = "<group>"; };
 		DE08535C0FEC21F500DAF53C /* SPImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPImage.h; sourceTree = "<group>"; };
 		DE08535D0FEC21F500DAF53C /* SPImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPImage.m; sourceTree = "<group>"; };
@@ -428,6 +452,8 @@
 		5D220DCD1332656A006FAF5E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5D732FE3139E85E8003BC955 /* SPDisplayObject+Screenshot.h */,
+				5D732FE4139E85E8003BC955 /* SPDisplayObject+Screenshot.m */,
 				5D220DED133278BA006FAF5E /* SHInputField.m */,
 				5D220DEB133278A5006FAF5E /* SHInputField.h */,
 				5D220DCF133266E4006FAF5E /* SHCircle.h */,
@@ -444,16 +470,26 @@
 				5D220DDA133266E4006FAF5E /* SHSwipeEvent.m */,
 				5D220DDB133266E4006FAF5E /* SHThumbstick.h */,
 				5D220DDC133266E4006FAF5E /* SHThumbstick.m */,
+				5D8F8268133ED04A00035DD5 /* SHSplashScreen.h */,
+				5D8F8269133ED04C00035DD5 /* SHSplashScreen.m */,
+				5D732FCE139E8238003BC955 /* SHFingerTrail.h */,
+				5D732FCF139E8238003BC955 /* SHFingerTrail.m */,
+				5D732FD3139E82ED003BC955 /* SHPinchEvent.h */,
+				5D732FD4139E82ED003BC955 /* SHPinchEvent.m */,
+				5D732FDF139E8441003BC955 /* SHClippedSprite.h */,
+				5D732FE0139E8442003BC955 /* SHClippedSprite.m */,
+				5D732FD7139E83DE003BC955 /* SXNSDataExtensions.h */,
+				5D732FD8139E83DE003BC955 /* SXNSDataExtensions.m */,
+				5D732FD9139E83DE003BC955 /* SXParticleSystem.h */,
+				5D732FDA139E83DE003BC955 /* SXParticleSystem.m */,
 				1895BF401337C1A100EF37F4 /* SXPolygon.h */,
 				1895BF411337C1A100EF37F4 /* SXPolygon.m */,
 				5D8F8260133ECE0200035DD5 /* SXGauge.h */,
 				5D8F8261133ECE0300035DD5 /* SXGauge.m */,
-				5D8F8264133ECEE500035DD5 /* SXCroppedImage.h */,
-				5D8F8265133ECEE700035DD5 /* SXCroppedImage.m */,
-				5D8F8268133ED04A00035DD5 /* SHSplashScreen.h */,
-				5D8F8269133ED04C00035DD5 /* SHSplashScreen.m */,
 				18314A5C135CA2DF004E3950 /* SXCheckbox.h */,
 				18314A5D135CA2DF004E3950 /* SXCheckbox.m */,
+				5D8F8264133ECEE500035DD5 /* SXCroppedImage.h */,
+				5D8F8265133ECEE700035DD5 /* SXCroppedImage.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -754,6 +790,12 @@
 				5D8F8266133ECEE900035DD5 /* SXCroppedImage.h in Headers */,
 				5D8F826A133ED05000035DD5 /* SHSplashScreen.h in Headers */,
 				18314A5E135CA2DF004E3950 /* SXCheckbox.h in Headers */,
+				5D732FD0139E8238003BC955 /* SHFingerTrail.h in Headers */,
+				5D732FD5139E82ED003BC955 /* SHPinchEvent.h in Headers */,
+				5D732FDB139E83DE003BC955 /* SXNSDataExtensions.h in Headers */,
+				5D732FDD139E83DE003BC955 /* SXParticleSystem.h in Headers */,
+				5D732FE1139E8442003BC955 /* SHClippedSprite.h in Headers */,
+				5D732FE5139E85E8003BC955 /* SPDisplayObject+Screenshot.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -935,6 +977,12 @@
 				5D8F8267133ECEE900035DD5 /* SXCroppedImage.m in Sources */,
 				5D8F826B133ED05000035DD5 /* SHSplashScreen.m in Sources */,
 				18314A5F135CA2DF004E3950 /* SXCheckbox.m in Sources */,
+				5D732FD1139E8238003BC955 /* SHFingerTrail.m in Sources */,
+				5D732FD6139E82ED003BC955 /* SHPinchEvent.m in Sources */,
+				5D732FDC139E83DE003BC955 /* SXNSDataExtensions.m in Sources */,
+				5D732FDE139E83DE003BC955 /* SXParticleSystem.m in Sources */,
+				5D732FE2139E8442003BC955 /* SHClippedSprite.m in Sources */,
+				5D732FE6139E85E8003BC955 /* SPDisplayObject+Screenshot.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
