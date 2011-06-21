@@ -50,7 +50,7 @@ typedef enum {
 + (void)start:(SPAudioSessionCategory)category;
 
 /// Starts an audio session with with the category 'SoloAmbientSound'.
-+ (void)start;
++ (bool)start;
 
 /// Stops the audio session. Call this before the application shuts down.
 + (void)stop;
@@ -60,5 +60,8 @@ typedef enum {
 
 /// Set the master volume for all audio. Range: [0.0 - 1.0]
 + (void)setMasterVolume:(float)volume;
+
+//allows you to check if other audio is playing.
++ (bool)otherAudioIsPlaying;
 
 @end

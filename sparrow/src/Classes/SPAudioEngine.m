@@ -63,9 +63,28 @@ static float masterVolume = 1.0f;
     }
 }
 
-+ (void)start
++ (bool)otherAudioIsPlaying
+{
+    UInt32 otherAudioIsPlaying;                                   // 1
+    UInt32 propertySize = sizeof (otherAudioIsPlaying);
+    
+    AudioSessionGetProperty (                                     // 2
+                             kAudioSessionProperty_OtherAudioIsPlaying,
+                             &propertySize,
+                             &otherAudioIsPlaying
+                             );
+    return otherAudioIsPlaying;
+}
+
++ (bool)start
 {      
-    [SPAudioEngine start:SPAudioSessionCategory_SoloAmbientSound];
+    bool otherAudioIsPlaying = [SPAudioEngine otherAudioIsPlaying];
+    
+    if (otherAudioIsPlaying)
+        [SPAudioEngine start:SPAudioSessionCategory_AmbientSound];
+    else
+        [SPAudioEngine start:SPAudioSessionCategory_SoloAmbientSound];
+    return otherAudioIsPlaying;
 }
 
 + (void)stop
