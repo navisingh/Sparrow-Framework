@@ -61,5 +61,8 @@
 + (SHLine *)lineWithVertices:(float)x1 :(float)y1 :(float)x2 :(float)y2;
 + (SHLine *)lineWithVertices:(float)x1 :(float)y1 :(float)x2 :(float)y2 andThickness:(float)thickness;
 
++ (SHLine *)lineWithCoords:(float)x1 :(float)y1 :(float)x2 :(float)y2;
++ (SHLine *)lineWithCoords:(float)x1 :(float)y1 :(float)x2 :(float)y2 andThickness:(float)thickness;
+
 
 @end

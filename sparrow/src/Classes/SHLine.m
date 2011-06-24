@@ -121,6 +121,14 @@
 	return [[[SHLine alloc] initWithCoords:x1:y1:x2:y2 andThickness:thickness] autorelease];
 }
 
++ (SHLine *)lineWithCoords:(float)x1 :(float)y1 :(float)x2 :(float)y2 {
+	return [[[SHLine alloc] initWithCoords:x1:y1:x2:y2] autorelease];
+}
+
++ (SHLine *)lineWithCoords:(float)x1 :(float)y1 :(float)x2 :(float)y2 andThickness:(float)thickness {
+	return [[[SHLine alloc] initWithCoords:x1:y1:x2:y2 andThickness:thickness] autorelease];
+}
+
 - (void)render:(SPRenderSupport *)support {
     uint colors[2];
     float alpha = self.alpha;
