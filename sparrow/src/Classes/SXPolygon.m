@@ -31,6 +31,52 @@
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
 
+/*  Usage:  See examples below.
+CGPoint vertices[] = {
+    {100, 100},
+    {50, 50},
+    //           {-30, 0},
+    //           {0, 200},
+    //           {-30, 0},
+    //           {0, -200},
+    //           {-50, -50},
+};
+int nMax = sizeof(vertices) / sizeof(vertices[0]);
+
+SXPolygon *poly1 = [SXPolygon polygonWithWidth:320 height:480];
+[poly1 setVertices:vertices count:nMax fillMode:GL_TRIANGLE_FAN];
+poly1.innerColor = 0xff0000;
+[self addChild:poly1];
+
+     
+ SXPolygon *poly2 = [SXPolygon polygonWithWidth:100 height:100];
+ [poly2 setVertices:vertices count:nMax];
+ poly2.innerColor = 0xff00ff;
+ [self addChild:poly2];
+ poly2.x = 50;
+ poly2.y = 50;
+ 
+ SXPolygon *poly3 = [SXPolygon polygonWithWidth:60 height:60];
+ poly3.innerColor = 0x00ff00;
+ [self addChild:poly3];
+ poly3.x = 200;
+ poly3.y = 200;
+ 
+ 
+ SXPolygon *poly4 = [SXPolygon polygonWithWidth:80 height:80];
+ poly4.innerColor = 0x00ff00;
+ [self addChild:poly4];
+ poly4.x = 200;
+ poly4.y = 300;
+ poly4.rotation = SP_D2R(-90);
+ 
+ SPTween *tween = [SPTween tweenWithTarget:poly3 time:3.0];
+ [tween animateProperty:@"rotation" targetValue:SP_D2R(120)];        
+ [self.stage.juggler addObject:tween];
+ [self.stage.juggler advanceTime:1.0];
+
+*/
+
 @implementation SXPolygon
 
 @synthesize fill = mFill;
