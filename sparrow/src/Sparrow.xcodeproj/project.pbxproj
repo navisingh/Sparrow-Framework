@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1806947C13C3B5AE00EEC6D7 /* SXSegment.h in Headers */ = {isa = PBXBuildFile; fileRef = 1806947A13C3B5AE00EEC6D7 /* SXSegment.h */; };
+		1806947D13C3B5AE00EEC6D7 /* SXSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 1806947B13C3B5AE00EEC6D7 /* SXSegment.m */; };
 		18314A5E135CA2DF004E3950 /* SXCheckbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 18314A5C135CA2DF004E3950 /* SXCheckbox.h */; };
 		18314A5F135CA2DF004E3950 /* SXCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18314A5D135CA2DF004E3950 /* SXCheckbox.m */; };
 		1895BF421337C1A200EF37F4 /* SXPolygon.h in Headers */ = {isa = PBXBuildFile; fileRef = 1895BF401337C1A100EF37F4 /* SXPolygon.h */; };
@@ -187,6 +189,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1806947A13C3B5AE00EEC6D7 /* SXSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXSegment.h; sourceTree = "<group>"; };
+		1806947B13C3B5AE00EEC6D7 /* SXSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXSegment.m; sourceTree = "<group>"; };
 		182B1DBE13B3DF6300D65956 /* libChipmunk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libChipmunk.a; sourceTree = SOURCE_ROOT; };
 		18314A5C135CA2DF004E3950 /* SXCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXCheckbox.h; sourceTree = "<group>"; };
 		18314A5D135CA2DF004E3950 /* SXCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXCheckbox.m; sourceTree = "<group>"; };
@@ -498,6 +502,8 @@
 				5D8F8265133ECEE700035DD5 /* SXCroppedImage.m */,
 				5D16AE1513B54DA600D2F426 /* BEDisplayDebugger.h */,
 				5D16AE1613B54DA600D2F426 /* BEDisplayDebugger.m */,
+				1806947A13C3B5AE00EEC6D7 /* SXSegment.h */,
+				1806947B13C3B5AE00EEC6D7 /* SXSegment.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -805,6 +811,7 @@
 				5D732FE1139E8442003BC955 /* SHClippedSprite.h in Headers */,
 				5D732FE5139E85E8003BC955 /* SPDisplayObject+Screenshot.h in Headers */,
 				5D16AE1713B54DA600D2F426 /* BEDisplayDebugger.h in Headers */,
+				1806947C13C3B5AE00EEC6D7 /* SXSegment.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -993,6 +1000,7 @@
 				5D732FE2139E8442003BC955 /* SHClippedSprite.m in Sources */,
 				5D732FE6139E85E8003BC955 /* SPDisplayObject+Screenshot.m in Sources */,
 				5D16AE1813B54DA600D2F426 /* BEDisplayDebugger.m in Sources */,
+				1806947D13C3B5AE00EEC6D7 /* SXSegment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

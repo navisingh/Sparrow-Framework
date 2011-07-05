@@ -59,6 +59,9 @@
 /// Compares two points.
 - (BOOL)isEqual:(id)other;
 
+///http://forum.sparrow-framework.org/topic/sppoint-perpendicular
+- (float) perpendicularTo: (SPPoint*) point;
+
 /// Calculates the distance between two points.
 + (float)distanceFromPoint:(SPPoint *)p1 toPoint:(SPPoint *)p2;
 

@@ -97,6 +97,11 @@
     return [NSString stringWithFormat:@"(x=%f, y=%f)", mX, mY];
 }
 
+- (float) perpendicularTo: (SPPoint*) point 
+{
+    return self.x * point.y - self.y * point.x;
+}
+
 + (float)distanceFromPoint:(SPPoint*)p1 toPoint:(SPPoint*)p2
 {
     return sqrtf(SQ(p2->mX - p1->mX) + SQ(p2->mY - p1->mY));
